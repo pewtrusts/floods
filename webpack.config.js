@@ -3,7 +3,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {sass} = require('svelte-preprocess-sass');
 
 const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production';
 const path = require('path');
@@ -20,10 +19,6 @@ const copyWebpack =
         from: '-/',
         context: 'src',
         to: '-/'
-    }, {
-        from: 'data/',
-        context: 'src',
-        to: 'data/'
     }, {
         from: 'assets/',
         context: 'src',
@@ -87,7 +82,7 @@ module.exports = env => {
                             {
                                 loader: 'eslint-loader'
                             }
-                        ]}
+                        ]},
                 {
                     test: /\.css$/,
                     use: [
@@ -119,17 +114,11 @@ module.exports = env => {
                     }
                 },
                 {
-                    test: /\.md$/,
+                    test: /html\.html$/,
                     use: [
                         {
                             loader: 'html-loader'
                         },
-                        {
-                            loader: 'markdown-loader',
-                            options: {
-                                smartypants: true
-                            }
-                        }
                     ]
                 }
             ]

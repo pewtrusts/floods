@@ -1,2 +1,3 @@
-/* global PUBLICPATH process */
-console.log('giddyUp');
+import html from './html.html';
+
+document.querySelector('#pew-app').insertAdjacentHTML('afterbegin', html);
