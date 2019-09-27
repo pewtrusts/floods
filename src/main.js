@@ -27,6 +27,8 @@ nestedData.forEach(nest => {
     nest.values.forEach(item => {
         var itemSect = document.createElement('section');
         itemSect.className = 'mm-section';
+        var content = document.createElement('div');
+        content.className = 'mm-section-content';
         var front = document.createElement('div');
         front.className = 'mm-front';
         var itemHed = document.createElement('h3');
@@ -55,8 +57,10 @@ nestedData.forEach(nest => {
         back.appendChild(backHed);
         back.appendChild(list);
 
-        itemSect.appendChild(front);
-        itemSect.appendChild(back);
+        content.appendChild(front);
+        content.appendChild(back);
+
+        itemSect.appendChild(content);
 
         container.appendChild(itemSect);
 
