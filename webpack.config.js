@@ -108,9 +108,10 @@ module.exports = env => {
                 },
                 {
                     test: /\.csv$/,
-                    loader: 'file-loader',
+                    loader: 'csv-loader',
                     options: {
-                        name: 'data/[name].[ext]?v=[hash:6]', 
+                        header: true,
+                        skipEmptyLines: true 
                     }
                 },
                 {

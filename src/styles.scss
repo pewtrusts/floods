@@ -1,0 +1,43 @@
+@import 'variables.scss';
+
+.mm-item-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+}
+.mm-section {
+    position: relative;
+    &::before {
+        content: '';
+        display: inline-block;
+        width: 1px;
+        height: 0;
+        padding-bottom: 100%;
+    }
+}
+.mm-front {
+    background-color: #000;
+    color: #fff;
+    display: grid;
+    grid-template-rows: 5fr 1fr;
+    height: 100%;
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    h3 {
+        align-self: center;
+        text-align: center;
+    }
+    a {
+        background-color: $blue;
+        color: #fff;
+        width: 150px;
+        padding: 10px 30px;
+        align-self: start;
+        justify-self: center;
+    }
+}
+.mm-back {
+    display: none;
+}
