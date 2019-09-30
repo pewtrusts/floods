@@ -37,6 +37,7 @@
         filter: brightness(50%);
         backface-visibility: hidden;
     }
+    transform: rotateY(180deg);
 }
 .mm-flip-icon {
     position: absolute;
@@ -58,7 +59,8 @@
     background-color: #fff;
     backface-visibility: hidden;
     height: 100%;
-    padding: 25px;
+    padding: 50px;
+    padding-top: 0;
     position: absolute;
     top: 0;
     width: 100%;
@@ -97,10 +99,39 @@
 .mm-back {
     background-color: $dark_blue;
     color: #fff;
-    transform: rotateY(180deg);
+    dl {
+        margin: 0;
+        margin-top: 40px;
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+    dt {
+        font-weight: 900;
+        display: inline;
+        &::after {
+            content: ': ';
+        }
+    }
+    dd {
+        display: inline;
+        margin: 0;
+        &::after {
+            content: '';
+            display: block;
+            clear: left;
+            margin-bottom: 30px;
+        }
+    }
+    
 }
 .mm-back-header {
     font-size: 1.5em;
-    font-weight: bold;
+    font-weight: 900;
     text-transform: uppercase;
+    border-bottom: 2px solid #fff;
+    line-height: 75px;
+    margin-left: -50px;
+    margin-right: -50px;
+    margin-bottom: 0;
+    text-align: center;
 }
