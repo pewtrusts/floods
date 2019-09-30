@@ -62,7 +62,8 @@ if (!isProd) {
 module.exports = env => {
     return {
         entry: {
-            bundle: ['./src/main.js']
+            render: './src/main.js',
+            hydrate: './src/scripts.js'
         },
         resolve: {
             alias: {

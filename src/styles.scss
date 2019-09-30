@@ -37,7 +37,7 @@
         filter: brightness(50%);
         backface-visibility: hidden;
     }
-    transform: rotateY(180deg);
+    
 }
 .mm-flip-icon {
     position: absolute;
@@ -99,6 +99,7 @@
 .mm-back {
     background-color: $dark_blue;
     color: #fff;
+    transform: rotateY(180deg);
     dl {
         margin: 0;
         margin-top: 40px;
