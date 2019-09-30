@@ -39,6 +39,7 @@ nestedData.forEach((nest, i) => {
         front.appendChild(img);
         img.setAttribute('srcset', `/-/media/${item.lo_res} 1x, /-/media/${item.hi_res} 2x`);
         img.setAttribute('width','100%');
+        img.setAttribute('height','100%');
         img.setAttribute('loading','lazy');
         var frontInner = document.createElement('div');
         frontInner.className = 'mm-front-inner';
