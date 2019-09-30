@@ -17,9 +17,9 @@
         height: 0;
         padding-bottom: 100%;
     }
-    &:hover .mm-section-content {
-      //  transform: rotateY( 180deg );
-      //  transition: transform 0.5s;
+    &.is-selected .mm-section-content {
+      transform: rotateY( 180deg );
+      transition: transform 0.5s;
     }
 }
 .mm-section-content {

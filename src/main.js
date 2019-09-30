@@ -26,7 +26,7 @@ nestedData.forEach(nest => {
    
     nest.values.forEach(item => {
         var itemSect = document.createElement('section');
-        itemSect.className = 'mm-section';
+        itemSect.className = 'mm-section js-mm-section';
         var content = document.createElement('div');
         content.className = 'mm-section-content';
         var front = document.createElement('div');
@@ -39,9 +39,10 @@ nestedData.forEach(nest => {
         var frontInner = document.createElement('div');
         frontInner.className = 'mm-front-inner';
         var itemHed = document.createElement('h3');
-        itemHed.textContent = item.hed; // TO DO: add item hed to csv
+        itemHed.textContent = item.hed; 
         var button = document.createElement('a');
-        button.href = '#'; // TO DO : ADD URLS TO CSV
+        button.className = 'js-mm-button';
+        button.href = item.url; 
         button.textContent = 'Get the brief';
         frontInner.appendChild(itemHed);
         frontInner.appendChild(button);
