@@ -18,8 +18,8 @@
         padding-bottom: 100%;
     }
     &:hover .mm-section-content {
-        transform: rotateY( 180deg );
-        transition: transform 0.5s;
+      //  transform: rotateY( 180deg );
+      //  transition: transform 0.5s;
     }
 }
 .mm-section-content {
@@ -31,38 +31,73 @@
     transform-style: preserve-3d;
 
 }
-.mm-front, .mm-back {
+.mm-front {
+    position: relative;
+    img {
+        filter: brightness(50%);
+        backface-visibility: hidden;
+    }
+}
+.mm-flip-icon {
+    position: absolute;
+    width: 40px;
+    right: 12px;
+    bottom: 20px;
+
+    fill: #fff;
+    z-index: 1;
+
+    transform: rotate(0);
+    transition: transform 100ms ease;
+    .mm-section:hover & {
+        transform: rotate(90deg);
+    }
+
+}
+.mm-front-inner, .mm-back {
     background-color: #fff;
     backface-visibility: hidden;
     height: 100%;
-    padding: 15px;
+    padding: 25px;
     position: absolute;
     top: 0;
     width: 100%;
  
 }
-.mm-front {
-    background-color: #000;
+.mm-front-inner {
+    background-color: rgba(255,255,255,0);
     color: #fff;
     display: grid;
     grid-template-rows: 5fr 1fr;
     h3 {
         align-self: center;
         text-align: center;
+        font-size: 2.25rem;
+        font-weight: 900;
     }
     a {
         background-color: $blue;
         color: #fff;
-        width: 150px;
+        width: 160px;
         padding: 10px 30px;
         align-self: start;
         justify-self: center;
+        transition: background-color 0.2s ease;
+        text-transform: uppercase;;
+        font-size: 0.85em;
+        font-weight: bold;
+        letter-spacing: 0.25px;
+        &:hover {
+            text-decoration: none;
+            background-color: $dark_blue;
+        }
+
     }
-    transform: rotateY(180deg);
 }
 .mm-back {
     background-color: $dark_blue;
     color: #fff;
+    transform: rotateY(180deg);
 }
 .mm-back-header {
     font-size: 1.5em;
