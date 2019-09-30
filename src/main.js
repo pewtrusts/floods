@@ -7,8 +7,11 @@ import * as d3 from 'd3-collection';
 var nestedData = d3.nest().key(d => d.section).entries(data);
 
 var frag = document.createDocumentFragment();
-nestedData.forEach(nest => {
+nestedData.forEach((nest, i) => {
     var section = document.createElement('section');
+    section.className = 'mm-category mm-category-' + i;
+    var outerContainer = document.createElement('div');
+    outerContainer.className = 'mm-outer-container';
     var hed = document.createElement('h2');
     var container = document.createElement('div');
     container.className = 'mm-item-container';
@@ -21,8 +24,8 @@ nestedData.forEach(nest => {
     var description = document.createElement('p');
     description.textContent = match.description;
    
-    section.appendChild(hed);
-    section.appendChild(description);
+    outerContainer.appendChild(hed);
+    outerContainer.appendChild(description);
    
     nest.values.forEach(item => {
         var itemSect = document.createElement('section');
@@ -36,6 +39,7 @@ nestedData.forEach(nest => {
         front.appendChild(img);
         img.setAttribute('srcset', `/-/media/${item.lo_res} 1x, /-/media/${item.hi_res} 2x`);
         img.setAttribute('width','100%');
+        img.setAttribute('loading','lazy');
         var frontInner = document.createElement('div');
         frontInner.className = 'mm-front-inner';
         var itemHed = document.createElement('h3');
@@ -75,7 +79,8 @@ nestedData.forEach(nest => {
         container.appendChild(itemSect);
 
     });
-    section.appendChild(container);
+    outerContainer.appendChild(container);
+    section.appendChild(outerContainer);
     frag.appendChild(section);
 });
 document.querySelector('#pew-app').appendChild(frag);

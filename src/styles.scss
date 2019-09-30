@@ -1,5 +1,34 @@
 @import 'variables.scss';
+.mm-category {
+    padding-bottom: 350px;
+    color: #fff;
+}
+.mm-category-0 {
+    padding-top: 40px;
+    margin-top: -40px;
+    background-image: linear-gradient(to top, $red, $blue 350px, $blue);
+}
+.mm-category-1 {
+    background-image: linear-gradient(to top, $teal, $red 350px, $red);
+}
+.mm-category-2 {
+    background-color: $teal;
+}
 
+.mm-outer-container {
+    width: 100%;
+    max-width: 990px;
+    margin: 0 auto;
+    h2 {
+        font-weight: 900;
+        span {
+            font-weight: 600;
+        }
+    }
+    > p {
+        font-size: 1.25rem;
+    }
+}
 .mm-item-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -78,7 +107,6 @@
         font-weight: 900;
     }
     a {
-        background-color: $blue;
         color: #fff;
         width: 160px;
         padding: 10px 30px;
@@ -92,6 +120,15 @@
         &:hover {
             text-decoration: none;
             background-color: $dark_blue;
+        }
+        .mm-category-0 & {
+            background-color: $blue;
+        }
+        .mm-category-1 & {
+            background-color: $red;
+        }
+        .mm-category-2 & {
+            background-color: $teal;
         }
 
     }

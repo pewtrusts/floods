@@ -1,4 +1,5 @@
 (function(){
+    // wrapped in an IIFE to avoid polluting global context
     var buttons = document.querySelectorAll('.js-mm-button');
     var items = document.querySelectorAll('.js-mm-section');
     function itemMouseHandler(){
@@ -19,7 +20,5 @@
     for ( var j = 0; j < items.length; j++ ){
         items[j].addEventListener('click', itemClickHandler);
     }
-    
-
 })()
 
