@@ -13,7 +13,7 @@ const isDev = mode === 'development';
 const isProd = process.env.NODE_ENV === 'production';
 
 const repoName = 'floods';
-const publicPath = isProd ? '/~/media/assets/2019/mitigation-matters/' : '';
+const publicPath = isProd ? '/-/media/data-visualizations/interactives/2019/mitigation/' : '';
 
 
 const copyWebpack =
@@ -52,13 +52,13 @@ const prerender = new PrerenderSPAPlugin({
          inject: true,
          headless: false,
          //sloMo: 10000,
-         renderAfterTime: 6000
+         renderAfterTime: 600
      }),
      postProcess: function(renderedRoute){
          renderedRoute.html = renderedRoute.html.replace(/class="emitted-css" href="(.*?)"/g,'class="emitted-css" href="' + publicPath + '$1' + '"');
          renderedRoute.html = renderedRoute.html.replace(/class="emitted-bundle" src="(.*?)"/g,'class="emitted-bundle" src="' + publicPath + '$1' + '"');
-         renderedRoute.html = renderedRoute.html.replace('<script class="emitted-bundle" src="/~/media/assets/2019/mitigation-matters/render.js"></script>','');
-         renderedRoute.html = renderedRoute.html.replace(/<head>[\s\S].*<\/head>/,'').replace(/<\/?html.*?>|<\/?body.*?>/g,'');
+         renderedRoute.html = renderedRoute.html.replace(`<script class="emitted-bundle" src="${publicPath}render.js"></script>`,'');
+         renderedRoute.html = renderedRoute.html.replace(/<head>[\s\S]?.*<\/head>/,'').replace(/<\/?html.*?>|<\/?body.*?>/g,'');
          renderedRoute.html = pretty(renderedRoute.html);
          return renderedRoute;
      }
@@ -72,7 +72,7 @@ const plugins = [
         inject: !isProd,
     }),
     new MiniCssExtractPlugin({
-        filename: '[name].css'
+        filename: 'styles.css'
     }),
     new webpack.DefinePlugin({
         'PUBLICPATH': '"' + publicPath + '"', // from https://webpack.js.org/plugins/define-plugin/: Note that because the plugin does a direct text replacement, the value given to it must include actual quotes inside of the string itself. Typically, this is done either with alternate quotes, such as '"production"', or by using JSON.stringify('production').
@@ -142,7 +142,7 @@ module.exports = env => {
                     }
                 },
                 {
-                    test: /html\.html$/,
+                    test: /overview\.html$/,
                     use: [
                         {
                             loader: 'html-loader'

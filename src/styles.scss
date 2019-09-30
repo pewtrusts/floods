@@ -1,11 +1,23 @@
 @import 'variables.scss';
-.mm-category {
+
+
+.mm-category-overview {
+    color: #fff;
+    background-color: #000;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: -40px;
+    p {
+        max-width: 720px;
+    }
+}
+
+.mm-category:not(.mm-category-overview) {
     padding-bottom: 350px;
     color: #fff;
 }
 .mm-category-0 {
     padding-top: 40px;
-    margin-top: -40px;
     background-image: linear-gradient(to top, $red, $blue 350px, $blue);
 }
 .mm-category-1 {
