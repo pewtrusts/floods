@@ -3,6 +3,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PrerenderSPAPlugin = require('prerender-spa-plugin');
+const pretty = require('pretty');
 
 const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production';
 const path = require('path');
@@ -11,7 +13,7 @@ const isDev = mode === 'development';
 const isProd = process.env.NODE_ENV === 'production';
 
 const repoName = 'floods';
-const publicPath = isProd ? 'TOCOME' : '';
+const publicPath = isProd ? '/~/media/assets/2019/mitigation-matters/' : '';
 
 
 const copyWebpack =
@@ -40,6 +42,28 @@ const copyWebpack =
         }
     }]);
 
+const prerender = new PrerenderSPAPlugin({
+     // Required - The path to the webpack-outputted app to prerender.
+     staticDir: path.join(__dirname, 'dist'),
+     // Required - Routes to render.
+     routes: ['/'],
+     renderer: new PrerenderSPAPlugin.PuppeteerRenderer({
+         injectProperty: 'IS_PRERENDERING',
+         inject: true,
+         headless: false,
+         //sloMo: 10000,
+         renderAfterTime: 6000
+     }),
+     postProcess: function(renderedRoute){
+         renderedRoute.html = renderedRoute.html.replace(/class="emitted-css" href="(.*?)"/g,'class="emitted-css" href="' + publicPath + '$1' + '"');
+         renderedRoute.html = renderedRoute.html.replace(/class="emitted-bundle" src="(.*?)"/g,'class="emitted-bundle" src="' + publicPath + '$1' + '"');
+         renderedRoute.html = renderedRoute.html.replace('<script class="emitted-bundle" src="/~/media/assets/2019/mitigation-matters/render.js"></script>','');
+         renderedRoute.html = renderedRoute.html.replace(/<head>[\s\S].*<\/head>/,'').replace(/<\/?html.*?>|<\/?body.*?>/g,'');
+         renderedRoute.html = pretty(renderedRoute.html);
+         return renderedRoute;
+     }
+ });
+
 const plugins = [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
@@ -57,6 +81,8 @@ const plugins = [
 
 if (!isProd) {
     plugins.push(copyWebpack);
+} else {
+    plugins.push(prerender);
 }
 
 module.exports = env => {
