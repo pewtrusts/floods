@@ -56,6 +56,7 @@ div.hero {
 }
 .mm-category-2 {
     background-color: $teal;
+    padding-bottom: 100px !important;
 }
 
 .mm-outer-container {
@@ -221,7 +222,7 @@ div.hero {
     }
     
 }
-.mm-front-inner a, .mm-back a {
+.mm-front-inner a, .mm-back a, .mm-ll-button {
     color: #fff;
     width: 160px;
     padding: 10px 30px;
@@ -242,10 +243,16 @@ div.hero {
     .mm-category-1 & {
         background-color: $red;
     }
-    .mm-category-2 & {
+    .mm-category-2 &:not(.mm-ll-button) {
         background-color: $teal;
     }
 
+}
+.mm-ll-button {
+    background-color: $blue;
+    margin: 20px auto;
+    display: block;
+    text-align: center
 }
 .mm-back-header {
     align-self: stretch;
@@ -270,4 +277,9 @@ div.hero {
         margin-right: calc(-3.95vw * 2);
         line-height: calc(7.426vw * 2);
     }
+}
+.mm-lessons-learned {
+    margin: 100px auto 0;
+    text-align: center;
+
 }

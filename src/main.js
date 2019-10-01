@@ -86,9 +86,20 @@ nestedData.forEach((nest, i) => {
         itemSect.appendChild(content);
 
         container.appendChild(itemSect);
+        outerContainer.appendChild(container);
 
     });
-    outerContainer.appendChild(container);
+    if ( i === 2 ){
+        var lessons = document.createElement('h2');
+        lessons.className = 'mm-lessons-learned';
+        lessons.textContent = 'Read more about lessons learned';
+        var llButton = document.createElement('a')
+        llButton.className = 'mm-ll-button';
+        llButton.textContent = 'discover';
+        llButton.href="#";
+        outerContainer.appendChild(lessons);
+        outerContainer.appendChild(llButton);
+    }
     section.appendChild(outerContainer);
     frag.appendChild(section);
 });
