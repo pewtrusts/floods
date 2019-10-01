@@ -13,15 +13,24 @@
 }
 
 .mm-category:not(.mm-category-overview) {
-    padding-bottom: 350px;
+    padding-bottom: 34.65%;
     color: #fff;
+    @media screen and (min-width: 1010px){
+        padding-bottom: 350px;
+    }
 }
 .mm-category-0 {
     padding-top: 40px;
-    background-image: linear-gradient(to top, $red, $blue 350px, $blue);
+    background-image: linear-gradient(to top, $red, $blue 34.65vw, $blue);
+    @media screen and (min-width: 1010px){
+        background-image: linear-gradient(to top, $red, $blue 350px, $blue);
+    }
 }
 .mm-category-1 {
-    background-image: linear-gradient(to top, $teal, $red 350px, $red);
+    background-image: linear-gradient(to top, $teal, $red 34.65vw, $red);
+    @media screen and (min-width: 1010px){
+        background-image: linear-gradient(to top, $teal, $red 350px, $red);
+    }
 }
 .mm-category-2 {
     background-color: $teal;
@@ -29,7 +38,8 @@
 
 .mm-outer-container {
     width: 100%;
-    max-width: 990px;
+    max-width: 1010px;
+    padding: 0 10px;
     margin: 0 auto;
     h2 {
         font-weight: 900;
@@ -45,6 +55,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 15px;
+    @media screen and (max-width: 559px){
+        grid-template-columns: 1fr;
+    }
 }
 .mm-section {
     perspective: 1000px;
@@ -83,9 +96,9 @@
 }
 .mm-flip-icon {
     position: absolute;
-    width: 40px;
-    right: 12px;
-    bottom: 20px;
+    width: 11%;
+    right: 3%;
+    bottom: 6%;
 
     fill: #fff;
     z-index: 1;
@@ -118,6 +131,13 @@
         text-align: center;
         font-size: 2.25rem;
         font-weight: 900;
+        font-size: 3.56vw;
+        @media screen and (min-width: 1010px){
+            font-size: 2.25rem;
+        }
+        @media screen and (max-width: 559px){
+            font-size: 7.12vw;
+        }
     }
     a {
         color: #fff;
