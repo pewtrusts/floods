@@ -35,27 +35,30 @@ div.hero {
 }
 
 .mm-category:not(.mm-category-overview) {
-    padding-bottom: 34.65%;
+    padding: 8.663% 0 25.988%;
     color: #fff;
     @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
-        padding-bottom: 350px;
+        padding: 87.5px 0 262.5px;
     }
 }
 .mm-category-0 {
     padding-top: 40px;
-    background-image: linear-gradient(to top, $red, $blue 34.65vw, $blue);
+    background-image: linear-gradient(to top, #000, $blue 17.325vw, $blue calc(100% - 17.325vw), #000);
     @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
-        background-image: linear-gradient(to top, $red, $blue 350px, $blue calc(100% - 350px), #000);
+        background-image: linear-gradient(to top, #000, $blue 175px, $blue calc(100% - 175px), #000);
     }
 }
 .mm-category-1 {
-    background-image: linear-gradient(to top, $teal, $red 34.65vw, $red);
+    background-image: linear-gradient(to top, #000, $red 17.325vw, $red calc(100% - 17.325vw), #000);
     @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
-        background-image: linear-gradient(to top, $teal, $red 350px, $red);
+        background-image: linear-gradient(to top, #000, $red 175px, $red calc(100% - 175px), #000);
     }
 }
 .mm-category-2 {
-    background-color: $teal;
+    background-image: linear-gradient(to top, $teal, $teal calc(100% - 17.325vw), #000);
+    @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
+        background-image: linear-gradient(to top, $teal, $teal calc(100% - 175px), #000);
+    }
     padding-bottom: 100px !important;
 }
 
