@@ -1,14 +1,36 @@
 @import 'variables.scss';
 
+/* site overrides */
+
+.hero__figure .hero__figure-picture img {
+    max-width: 100%;
+}
+div.hero {
+    margin-top: -40px;
+    position: relative;
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 100px, rgba(0,0,0,0));
+        top: 0;
+    }
+}
+
+
+
+/* end site overrides */
 
 .mm-category-overview {
     color: #fff;
     background-color: #000;
-    padding-top: 40px;
+    padding-top: 0px;
     padding-bottom: 40px;
     margin-top: -40px;
     p {
-        max-width: 720px;
+        max-width: 990px;
     }
 }
 
@@ -23,7 +45,7 @@
     padding-top: 40px;
     background-image: linear-gradient(to top, $red, $blue 34.65vw, $blue);
     @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
-        background-image: linear-gradient(to top, $red, $blue 350px, $blue);
+        background-image: linear-gradient(to top, $red, $blue 350px, $blue calc(100% - 350px), #000);
     }
 }
 .mm-category-1 {
