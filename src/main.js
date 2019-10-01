@@ -71,9 +71,14 @@ nestedData.forEach((nest, i) => {
             definition.textContent = item[d.toLowerCase()]
             list.appendChild(definition);
         });
+        var backButton = document.createElement('a');
+        backButton.className = 'js-mm-button';
+        backButton.href = item.url; 
+        backButton.textContent = 'Get the brief';
 
         back.appendChild(backHed);
         back.appendChild(list);
+        back.appendChild(backButton);
 
         content.appendChild(front);
         content.appendChild(back);
