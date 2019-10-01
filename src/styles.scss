@@ -224,7 +224,7 @@ div.hero {
 }
 .mm-front-inner a, .mm-back a, .mm-ll-button {
     color: #fff;
-    width: 160px;
+    width: 164px;
     padding: 10px 30px;
     align-self: start;
     justify-self: center;
@@ -233,18 +233,32 @@ div.hero {
     font-size: 0.85em;
     font-weight: bold;
     letter-spacing: 0.25px;
+    border-width: 2px;
+    border-style: solid;
     &:hover {
         text-decoration: none;
-        background-color: $dark_blue;
+        
     }
     .mm-category-0 & {
         background-color: $blue;
+        border-color: $blue;
+        &:hover {
+            background-color: rgba(0,0,0,0);
+        }
     }
     .mm-category-1 & {
         background-color: $red;
+        border-color: $red;
+        &:hover {
+            background-color: rgba(0,0,0,0);
+        }
     }
     .mm-category-2 &:not(.mm-ll-button) {
         background-color: $teal;
+        border-color: $teal;
+        &:hover {
+            background-color: rgba(0,0,0,0);
+        }
     }
 
 }
@@ -252,7 +266,13 @@ div.hero {
     background-color: $blue;
     margin: 20px auto;
     display: block;
-    text-align: center
+    text-align: center;
+    width: 160px;
+    border-width: 0;
+    &:hover {
+        color: #fff;
+        background-color: darken($blue, 20%);
+    }
 }
 .mm-back-header {
     align-self: stretch;
@@ -281,5 +301,4 @@ div.hero {
 .mm-lessons-learned {
     margin: 100px auto 0;
     text-align: center;
-
 }
