@@ -15,7 +15,11 @@ nestedData.forEach((nest, i) => {
     section.className = 'mm-category mm-category-' + i;
     var outerContainer = document.createElement('div');
     outerContainer.className = 'mm-outer-container';
+    var hedContainer = document.createElement('div');
+    hedContainer.className = 'rich-text';
     var hed = document.createElement('h2');
+    hed.className = 'with_nav';
+    hedContainer.appendChild(hed);
     var container = document.createElement('div');
     container.className = 'mm-item-container';
 
@@ -27,7 +31,7 @@ nestedData.forEach((nest, i) => {
     var description = document.createElement('p');
     description.textContent = match.description;
    
-    outerContainer.appendChild(hed);
+    outerContainer.appendChild(hedContainer);
     outerContainer.appendChild(description);
    
     nest.values.forEach(item => {
