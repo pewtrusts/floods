@@ -169,7 +169,7 @@
         visibility: hidden;
     }
     img {
-        filter: brightness(75%);
+        filter: brightness(65%);
       //  backface-visibility: hidden;
         line-height: 0;
     }
@@ -185,10 +185,10 @@
     fill: #fff;
     z-index: 1;
 
-    transform: rotate(0);
+    transform: rotate(90deg);
     transition: transform 100ms ease;
     .mm-section:hover & {
-        transform: rotate(90deg);
+        transform: rotate(0deg);
     }
 
 }
@@ -222,6 +222,7 @@
         text-align: center;
         font-weight: 900;
         font-size: 3.56vw;
+        line-height: 120%;
         @media screen and (min-width: 1010px), screen and (max-width: 724px) {
             font-size: 2.25rem;
         }
