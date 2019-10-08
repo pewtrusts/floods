@@ -97,7 +97,7 @@
     perspective: 1000px;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 1s;
+    transition: transform 0.5s;
     &::before {
         content: '';
         display: inline-block;
@@ -107,7 +107,6 @@
     }
     &.is-selected .mm-section-content {
       transform: rotateY( 180deg );
-      transition: transform 0.5s;
     }
 }
 .mm-section-content {
@@ -121,9 +120,13 @@
 }
 .mm-front {
     position: relative;
+    visibility: visible;
+    .back-face-visible & {
+        visibility: hidden;
+    }
     img {
         filter: brightness(75%);
-        backface-visibility: hidden;
+      //  backface-visibility: hidden;
         line-height: 0;
     }
     
@@ -146,7 +149,7 @@
 }
 .mm-front-inner, .mm-back {
     background-color: #fff;
-    backface-visibility: hidden;
+ //   backface-visibility: hidden;
     height: 100%;
     padding: 0 3.95vw 2.475vw;
     position: absolute;
@@ -188,6 +191,7 @@
     grid-template-rows: 75px auto 75px;
     grid-template-rows: 1fr 5fr 1fr;
     transform: rotateY(180deg);
+    visibility: hidden;
     dl {
         margin: 0;
         margin-top: 3.96vw;
@@ -227,6 +231,9 @@
                 margin-bottom: calc(2.97vw * 2);
             }
         }
+    }
+    .back-face-visible & {
+        visibility: visible;
     }
     
 }
