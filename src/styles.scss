@@ -84,15 +84,58 @@
 }
 .mm-item-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template: // need to explicitly set grid areas for postCSS to support IE11
+        "one    two" 1fr
+        "three four" 1fr
+        "five six" 1fr /
+        1fr 1fr;
     grid-gap: 15px;
     margin-top: 5%;
+    .mm-category-1 & {
+        grid-template:
+            "one    two" 1fr
+            "three four" 1fr /
+            1fr 1fr;
+    }
     @media screen and (max-width: 724px){
-        grid-template-columns: 1fr;
+        grid-template:
+            "one" 1fr
+            "two" 1fr
+            "three" 1fr
+            "four" 1fr
+            "five" 1fr /
+            1fr;
         max-width: 500px;
         margin: 5% auto 0;
+        .mm-category-1 & {
+            grid-template:
+                "one" 1fr
+                "two" 1fr
+                "three" 1fr
+                "four" 1fr /
+                1fr;
+        }
     }
 }
+.mm-section-1 {
+    grid-area: one;
+}
+.mm-section-2 {
+    grid-area: two;
+}
+.mm-section-3 {
+    grid-area: three;
+}
+.mm-section-4 {
+    grid-area: four;
+}
+.mm-section-5 {
+    grid-area: five;
+}
+.mm-section-6 {
+    grid-area: six;
+}
+
 .mm-section {
     perspective: 1000px;
     position: relative;
@@ -121,6 +164,7 @@
 .mm-front {
     position: relative;
     visibility: visible;
+    height: 100%;
     .back-face-visible & {
         visibility: hidden;
     }
@@ -133,7 +177,8 @@
 }
 .mm-flip-icon {
     position: absolute;
-    width: 11%;
+    width: 54px;
+    height: 38px;
     right: 3%;
     bottom: 6%;
 
@@ -167,8 +212,12 @@
     background-color: rgba(255,255,255,0);
     color: #fff;
     display: grid;
-    grid-template-rows: 6fr 1fr;
+    grid-template:
+        "alpha" 85.714%
+        "beta" 14.286% /
+        100%;
     h3 {
+        grid-area: alpha;
         align-self: center;
         text-align: center;
         font-weight: 900;
@@ -183,16 +232,24 @@
             font-size: calc(3.56vw * 2);
         }
     }
+    a {
+        grid-area: beta;
+    }
 }
 .mm-back {
     background-color: $dark_blue;
     color: #fff;
     display: grid;
-    grid-template-rows: 75px auto 75px;
     grid-template-rows: 1fr 5fr 1fr;
+    grid-template: 
+        "uno"  1fr
+        "dos"  5fr
+        "tres" 1fr /
+        1fr;
     transform: rotateY(180deg);
     visibility: hidden;
     dl {
+        grid-area: dos;
         margin: 0;
         margin-top: 3.96vw;
         font-size: 1.9vw;
@@ -232,6 +289,9 @@
             }
         }
     }
+    a {
+        grid-area: tres;
+    }
     .back-face-visible & {
         visibility: visible;
     }
@@ -239,7 +299,8 @@
 }
 .mm-front-inner a, .mm-back a, .mm-ll-button {
     color: #fff;
-    width: 164px;
+    display: block;
+    width: 168px;
     padding: 10px 30px;
     align-self: start;
     justify-self: center;
@@ -290,6 +351,7 @@
     }
 }
 .mm-back-header {
+    grid-area: uno;
     align-self: stretch;
     line-height: 7.426vw;
     font-size: 2.376vw;

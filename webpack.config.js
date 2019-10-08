@@ -44,7 +44,7 @@ const copyWebpack =
 
 const prerender = new PrerenderSPAPlugin({
      // Required - The path to the webpack-outputted app to prerender.
-     staticDir: path.join(__dirname, 'dist'),
+     staticDir: path.join(__dirname, outputFolder),
      // Required - Routes to render.
      routes: ['/'],
      renderer: new PrerenderSPAPlugin.PuppeteerRenderer({
@@ -55,10 +55,13 @@ const prerender = new PrerenderSPAPlugin({
          renderAfterTime: 600
      }),
      postProcess: function(renderedRoute){
-         renderedRoute.html = renderedRoute.html.replace(/class="emitted-css" href="(.*?)"/g,'class="emitted-css" href="' + publicPath + '$1' + '"');
-         renderedRoute.html = renderedRoute.html.replace(/class="emitted-bundle" src="(.*?)"/g,'class="emitted-bundle" src="' + publicPath + '$1' + '"');
-         renderedRoute.html = renderedRoute.html.replace(`<script class="emitted-bundle" src="${publicPath}render.js"></script>`,'');
-         renderedRoute.html = renderedRoute.html.replace(/<head>[\s\S]?.*<\/head>/,'').replace(/<\/?html.*?>|<\/?body.*?>/g,'');
+        var regex = new RegExp(`<script .*? src="${publicPath}render.js"></script>`);
+        if ( isProd ){
+             renderedRoute.html = renderedRoute.html.replace(/class="emitted-css" href="(.*?)"/g,'class="emitted-css" href="' + publicPath + '$1' + '"');
+             renderedRoute.html = renderedRoute.html.replace(/class="emitted-bundle" src="(.*?)"/g,'class="emitted-bundle" src="' + publicPath + '$1' + '"');
+             renderedRoute.html = renderedRoute.html.replace(/<head>[\s\S]?.*<\/head>/,'').replace(/<\/?html.*?>|<\/?body.*?>/g,'');
+         } 
+         renderedRoute.html = renderedRoute.html.replace(regex,'');
          renderedRoute.html = pretty(renderedRoute.html);
          return renderedRoute;
      }
@@ -81,9 +84,52 @@ const plugins = [
 
 if (!isProd) {
     plugins.push(copyWebpack);
-} else {
+}
+if (!isDev) {
     plugins.push(prerender);
 }
+
+const scssUse = isDev ? [
+    /**
+     * MiniCssExtractPlugin doesn't support HMR.
+     * For developing, use 'style-loader' instead.
+     * */
+    'style-loader',
+    'css-loader',
+    'sass-loader'
+] : [{
+        loader: MiniCssExtractPlugin.loader,
+    },
+    {
+        loader: 'css-loader',
+        options: {
+           
+            sourceMap: true,
+            importLoaders: 1
+        }
+    },
+    {
+        loader: 'postcss-loader',
+        options: {
+            sourceMap: true,
+            ident: 'postcss',
+            plugins: (loader) => [
+                require('postcss-preset-env')({
+                    autoprefixer: {
+                        grid: true
+                    }
+                }),
+            ]
+        }
+    },
+    {
+        loader: 'sass-loader',
+        options: {
+            sourceMap: true
+        }
+    },
+];
+
 
 module.exports = env => {
     return {
@@ -123,15 +169,7 @@ module.exports = env => {
                 },
                 {
                     test: /\.scss$/,
-                    use: [
-                        /**
-                         * MiniCssExtractPlugin doesn't support HMR.
-                         * For developing, use 'style-loader' instead.
-                         * */
-                        !isDev ? MiniCssExtractPlugin.loader : 'style-loader',
-                        'css-loader',
-                        'sass-loader'
-                    ]
+                    use: scssUse
                 },
                 {
                     test: /\.csv$/,
