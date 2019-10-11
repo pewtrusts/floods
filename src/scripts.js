@@ -28,5 +28,24 @@
     for ( var j = 0; j < items.length; j++ ){
         items[j].addEventListener('click', itemClickHandler);
     }
+    var navLinks = document.querySelectorAll('.mm-nav-link');
+    function observerCallback(entries){
+        var activeLink = document.querySelector('.mm-nav-link.is-active');
+        entries.forEach(function(entry){
+            if ( entry.isIntersecting ){
+                if ( activeLink ) {
+                    activeLink.classList.remove('is-active');
+                }
+                if ( entry.target.dataset.anchor !== "-1" ){
+                    navLinks[entry.target.dataset.anchor].classList.add('is-active');
+                }
+            }
+        });
+    }
+    var observer = new IntersectionObserver(observerCallback);
+    var anchors = document.querySelectorAll('.mm-category--anchor');
+    for ( var k = 0; k < anchors.length; k++ ){
+        observer.observe(anchors[k]);
+    }
 })()
 

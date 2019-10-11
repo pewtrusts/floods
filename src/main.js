@@ -1,3 +1,4 @@
+/* global process */
 import './styles.scss';
 
 import data from './data.csv';
@@ -6,13 +7,36 @@ import overview from './overview.html';
 import * as d3 from 'd3-collection';
 
 var appContainer = document.querySelector('#pew-app');
-appContainer.insertAdjacentHTML('afterbegin', overview);
+if ( process.env.NODE_ENV === 'development' ){
+    document.querySelector('.js-main-primary > section').insertAdjacentHTML('afterend', overview);
+}
 var nestedData = d3.nest().key(d => d.section).entries(data);
 
+
+
 var frag = document.createDocumentFragment();
+var navSection = document.createElement('section');
+navSection.className = 'mm-category mm-category-nav';
+var nav = document.createElement('nav');
+nav.className = 'mm-nav';
+nav.setAttribute('aria-label','in-page navigation');
+nestedData.forEach((nest, i) => {
+    var link = document.createElement('a');
+    link.className = 'mm-nav-link mm-nav-link-' + i;
+    link.textContent = metadata.find(d => d.section === nest.key).short;
+    nav.appendChild(link);
+});
+navSection.appendChild(nav);
+appContainer.insertAdjacentElement('afterbegin', navSection);
 nestedData.forEach((nest, i) => {
     var section = document.createElement('section');
     section.className = 'mm-category mm-category-' + i;
+    var sectionAnchor = document.createElement('a');
+    sectionAnchor.className = 'mm-category--anchor mm-category--anchor-' + i;
+    sectionAnchor.setAttribute('data-anchor', i);
+    var topAnchor = document.createElement('a');
+    topAnchor.className = 'mm-category--anchor mm-category--anchor-top';
+    topAnchor.setAttribute('data-anchor', -1);
     var outerContainer = document.createElement('div');
     outerContainer.className = 'mm-outer-container';
     var hedContainer = document.createElement('div');
@@ -104,6 +128,10 @@ nestedData.forEach((nest, i) => {
         outerContainer.appendChild(lessons);
         outerContainer.appendChild(llButton);
     }
+    if ( i === 0 ){
+        section.appendChild(topAnchor);
+    }
+    section.appendChild(sectionAnchor);
     section.appendChild(outerContainer);
     frag.appendChild(section);
 });
