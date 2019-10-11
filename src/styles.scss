@@ -2,7 +2,6 @@
 
 /* site overrides */
 .page-banner {
-    margin-top: -40px;
     &::before {
         content: '';
         display: block;
@@ -27,12 +26,16 @@
     position: relative;
 }
 
+.page-toolbar__wrapper {
+    margin-top: -40px;
+}
+
 /* end site overrides */
 
 .mm-category-overview {
     color: #fff;
     background-color: #000;
-    padding-top: 0px;
+    padding-top: 40px;
     padding-bottom: 40px;
     margin-top: -40px;
     p {
