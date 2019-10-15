@@ -32,12 +32,21 @@ appContainer.insertAdjacentElement('afterbegin', navSection);
 nestedData.forEach((nest, i) => {
     var section = document.createElement('section');
     section.className = 'mm-category mm-category-' + i;
+    //downward anchors
     var sectionAnchor = document.createElement('a');
     sectionAnchor.className = 'mm-category--anchor mm-category--anchor-' + i;
     sectionAnchor.setAttribute('data-anchor', i);
+    sectionAnchor.setAttribute('data-direction', 'down');
+    //upward anchors
+    var upwardAnchor = document.createElement('a');
+    upwardAnchor.className = 'mm-category--anchor mm-category--anchor-upward mm-category--anchor-upward-' + i;
+    upwardAnchor.setAttribute('data-anchor-upward', i);
+    upwardAnchor.setAttribute('data-anchor', i);
+    upwardAnchor.setAttribute('data-direction', 'up');
     var topAnchor = document.createElement('a');
     topAnchor.className = 'mm-category--anchor mm-category--anchor-top';
     topAnchor.setAttribute('data-anchor', -1);
+    topAnchor.setAttribute('data-direction', 'up');
     var outerContainer = document.createElement('div');
     outerContainer.className = 'mm-outer-container';
     var hedContainer = document.createElement('div');
@@ -133,6 +142,7 @@ nestedData.forEach((nest, i) => {
         section.appendChild(topAnchor);
     }
     section.appendChild(sectionAnchor);
+    section.appendChild(upwardAnchor);
     section.appendChild(outerContainer);
     frag.appendChild(section);
 });

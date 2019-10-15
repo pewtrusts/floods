@@ -3,6 +3,8 @@
     var buttons = document.querySelectorAll('.js-mm-button');
     var items = document.querySelectorAll('.js-mm-section');
     var navAnchors = document.querySelectorAll('.mm-category--anchor:not(.mm-category--anchor-top');
+    var scrollPosition = 0;
+    var scrollDirection;
     function itemMouseHandler(){
         var _this = this;
         this.classList.remove('is-selected');
@@ -41,7 +43,9 @@
     function observerCallback(entries){
         var activeLink = document.querySelector('.mm-nav-link.is-active');
         entries.forEach(function(entry){
-            if ( entry.isIntersecting ){
+            scrollDirection = window.pageYOffset < scrollPosition ? 'up' : window.pageYOffset > scrollPosition ? 'down' : scrollDirection;
+            scrollPosition = window.pageYOffset;
+            if (((entry.target.dataset.direction === 'down' && scrollDirection === 'down') || (entry.target.dataset.direction === 'up' && scrollDirection === 'up')) && entry.isIntersecting ){
                 if ( activeLink ) {
                     activeLink.classList.remove('is-active');
                 }

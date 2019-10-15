@@ -145,14 +145,19 @@
     }
 }
 .mm-category--anchor {
-    outline: 1px magenta;
     height: 350px;
     width: 1px;
-    background-color: #f00;
+    background-color: cyan;
     position: absolute;
     top: calc(100vh - 517px);
     left: 10px;
     z-index: 9
+}
+.mm-category--anchor-upward {
+    background-color: yellow;
+    height: 10px;
+    top: auto;
+    bottom: calc(50vh + 125px);
 }
 .mm-category--anchor-0 {
     height: 1px;
