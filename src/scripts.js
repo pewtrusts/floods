@@ -2,7 +2,7 @@
     // wrapped in an IIFE to avoid polluting global context
     var buttons = document.querySelectorAll('.js-mm-button');
     var items = document.querySelectorAll('.js-mm-section');
-    var navAnchors = document.querySelectorAll('.mm-category--anchor:not(.mm-category--anchor-top');
+    var navAnchors = document.querySelectorAll('.mm-category--anchor:not(.mm-category--anchor-top):not(.mm-category--anchor-upward)');
     var scrollPosition = 0;
     var scrollDirection;
     function itemMouseHandler(){

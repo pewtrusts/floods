@@ -103,6 +103,9 @@
     width: calc(33% - 10px);
     cursor: pointer;
     border-bottom: 10px solid #000;
+    &:hover {
+        text-decoration: none;
+    }
     &.mm-nav-link-0:hover, &.mm-nav-link-0.is-active {
         color: $blue;
     }
@@ -191,13 +194,16 @@
     max-width: 1010px;
     padding: 0 10px;
     margin: 0 auto;
+    
     h2 {
         font-size: 32px;
         font-weight: 900;
         padding-top: 1em;
+        position: relative;
         span {
             font-weight: 600;
         }
+       
     }
     > p {
         font-size: 1.25rem;
