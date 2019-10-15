@@ -1,4 +1,3 @@
-/* global process */
 import './styles.scss';
 
 import data from './data.csv';
@@ -7,9 +6,9 @@ import overview from './overview.html';
 import * as d3 from 'd3-collection';
 
 var appContainer = document.querySelector('#pew-app');
-if ( process.env.NODE_ENV === 'development' ){
-    document.querySelector('.js-main-primary > section').insertAdjacentHTML('afterend', overview);
-}
+//if ( process.env.NODE_ENV === 'development' ){
+    appContainer.insertAdjacentHTML('afterbegin', overview);
+//}
 var nestedData = d3.nest().key(d => d.section).entries(data);
 
 
@@ -28,7 +27,7 @@ nestedData.forEach((nest, i) => {
     nav.appendChild(link);
 });
 navSection.appendChild(nav);
-appContainer.insertAdjacentElement('afterbegin', navSection);
+appContainer.appendChild(navSection);
 nestedData.forEach((nest, i) => {
     var section = document.createElement('section');
     section.className = 'mm-category mm-category-' + i;

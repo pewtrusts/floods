@@ -17,7 +17,8 @@ const publicPath = isProd ? '/-/media/data-visualizations/interactives/2019/miti
 
 
 const copyWebpack =
-    new CopyWebpackPlugin([{
+    new CopyWebpackPlugin([
+    {
         from: '-/',
         context: 'src',
         to: '-/'
@@ -42,6 +43,13 @@ const copyWebpack =
         }
     }]);
 
+const prodCopyWebpack = new CopyWebpackPlugin([
+    {
+        from: 'overview.html',
+        context: 'src',
+    }
+]);
+
 const prerender = new PrerenderSPAPlugin({
      // Required - The path to the webpack-outputted app to prerender.
      staticDir: path.join(__dirname, outputFolder),
@@ -59,7 +67,7 @@ const prerender = new PrerenderSPAPlugin({
         if ( isProd ){
              renderedRoute.html = renderedRoute.html.replace(/class="emitted-css" href="(.*?)"/g,'class="emitted-css" href="' + publicPath + '$1' + '"');
              renderedRoute.html = renderedRoute.html.replace(/class="emitted-bundle" src="(.*?)"/g,'class="emitted-bundle" src="' + publicPath + '$1' + '"');
-             renderedRoute.html = renderedRoute.html.replace(/<head>[\s\S]?.*<\/head>/,'').replace(/<\/?html.*?>|<\/?body.*?>/g,'');
+             renderedRoute.html = renderedRoute.html.replace(/<\/?head>/g,'').replace(/<\/?html.*?>|<\/?body.*?>/g,'');
          } 
          renderedRoute.html = renderedRoute.html.replace(regex,'');
          renderedRoute.html = pretty(renderedRoute.html);
@@ -84,6 +92,8 @@ const plugins = [
 
 if (!isProd) {
     plugins.push(copyWebpack);
+} else {
+    plugins.push(prodCopyWebpack);
 }
 if (!isDev) {
     plugins.push(prerender);
