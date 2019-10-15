@@ -23,6 +23,7 @@ nav.setAttribute('aria-label','in-page navigation');
 nestedData.forEach((nest, i) => {
     var link = document.createElement('a');
     link.className = 'mm-nav-link mm-nav-link-' + i;
+    link.setAttribute('data-section', i);
     link.textContent = metadata.find(d => d.section === nest.key).short;
     nav.appendChild(link);
 });
