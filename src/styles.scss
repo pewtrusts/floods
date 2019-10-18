@@ -3,7 +3,7 @@
 /* site overrides */
 .page-banner {
     height: 800px;
-    max-height: 66vh;
+    max-height: 50vh;
     &::before {
         content: '';
         display: block;
@@ -30,12 +30,13 @@
 
 .page-toolbar__wrapper {
     margin-top: -40px;
+    
 }
 .page-toolbar {
     transition: background-color 0.5s ease, color 0.5s ease;
-    &:not(.page-toolbar--sticky) {
         background-color: darken(#d85555,48%);
         color: #fff;
+        z-index: 99;
         .page-toolbar__page-title {
             color: #fff;
         }
@@ -46,10 +47,20 @@
                 stroke: #fff;
             }
         }
-        .page-toolbar__selector .page-toolbar__selector-icon {
+        
+            .page-toolbar__action-items {
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity 0.2s ease;
+            }
 
+        
+        &.page-toolbar--sticky {
+           .page-toolbar__action-items {
+            visibility: visible;
+            opacity: 1;
+           }
         }
-    }
 }
 .page-toolbar__page-title, .page-toolbar__selector {
     transition: color 0.5s ease;
@@ -84,11 +95,14 @@
     z-index: 1;
     border-top: 1px solid #fff;
     border-bottom: 1px solid rgba(#fff, 0.5);
+    @media screen and (max-width: 910px){
+        top: 98px;
+    }
 }
 .mm-nav {
     counter-reset: nav;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     margin: 0 auto;
@@ -101,10 +115,11 @@
     counter-increment: nav;
     font-weight: 400;
     text-transform: uppercase;
-    font-size: 1.25em;
+    font-size: 20px;
     padding: 20px 0;
     text-align: center;
-    width: calc(33% - 10px);
+    width: calc(33%);
+    max-width: 317px;
     cursor: pointer;
     //border-bottom: 10px solid #000;
     &:hover {
@@ -127,6 +142,10 @@
         //color: #fff;
         //background-color: #f0f0f0;
         font-weight: 900;
+    }
+    @media screen and (max-width: 675px){
+        font-size: 2.95vw;
+        padding: 2.95vw 0;
     }
 
 
@@ -151,11 +170,17 @@
     }
 }
 .mm-category--anchor {
-    height: 350px;
+    @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
+            height: 350px;
+            top: calc(100vh - 517px);
+            padding-bottom: 0;
+    }
+    top: calc(100vh - 167px - 34.65vw);
+    height: 0;
+    padding-bottom: 34.65%;
     width: 1px;
     background-color: cyan;
     position: absolute;
-    top: calc(100vh - 517px);
     left: 10px;
     z-index: 9
 }
@@ -167,23 +192,26 @@
 }
 .mm-category--anchor-0 {
     height: 1px;
-    top: calc(100vh - 67px);
+    padding-bottom: 0;
+    top: calc(100vh - 167px);
 }
 .mm-category--anchor-top {
     height: 1px;
-    top: -64px;
+    top: -169px;
 }
 .mm-category-0 {
     padding-top: 0;
-    background-image: linear-gradient(to top, $red, $blue 34.65vw, $blue);
+    //background-image: linear-gradient(to top, $red, $blue 34.65vw, $blue);
+    background-image: linear-gradient(to top, darken($red, 25%), darken($blue, 25%) 17vh, darken($blue, 5%) 40%, darken($blue, 5%) 60%, darken($blue, 40%) calc(100% - 100px), darken($blue, 40%)  );
     @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
         
-        background-image: linear-gradient(to top, darken($red, 25%), darken($blue, 25%) 350px, darken($blue, 5%) 40%, darken($blue, 5%) 60%, darken($blue, 40%) calc(100% - 100px), darken($blue, 40%)  );
+        background-image: linear-gradient(to top, darken($red, 25%), darken($blue, 25%) 17vh, darken($blue, 5%) 40%, darken($blue, 5%) 60%, darken($blue, 40%) calc(100% - 100px), darken($blue, 40%)  );
         //
     }
 }
 .mm-category-1 {
-    background-image: linear-gradient(to top, $teal, $red 34.65vw, $red);
+    //background-image: linear-gradient(to top, $teal, $red 34.65vw, $red);
+    background-image: linear-gradient(to top, darken($teal, 25%), darken($red, 25%) 17vh, darken($red, 5%) 40%, darken($red, 5%) 60%, darken($red, 25%));
     @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
         background-image: linear-gradient(to top, darken($teal, 25%), darken($red, 25%) 350px, darken($red, 5%) 40%, darken($red, 5%) 60%, darken($red, 25%));
     }
