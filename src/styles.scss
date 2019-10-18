@@ -2,20 +2,22 @@
 
 /* site overrides */
 .page-banner {
+    height: 800px;
+    max-height: 66vh;
     &::before {
         content: '';
         display: block;
         position: absolute;
         width: 100%;
         height: 100%;
-        background-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 200px, rgba(0,0,0,0));
+        background-image: linear-gradient(to top, rgba(darken(#d85555,48%),1), rgba(darken(#FF7F49,48%),0.25) 200px, rgba(darken(#FF7F49,48%),0));
         top: 0;
     }
 }
 .page-banner__figure {
     max-width: 100%;
     img {
-        object-position: 50% 58%;
+        object-position: 50% 64% !important;
         width: 100%;
     }
 }
@@ -32,7 +34,7 @@
 .page-toolbar {
     transition: background-color 0.5s ease, color 0.5s ease;
     &:not(.page-toolbar--sticky) {
-        background-color: #000;
+        background-color: darken(#d85555,48%);
         color: #fff;
         .page-toolbar__page-title {
             color: #fff;
@@ -56,14 +58,14 @@
     transition: fill 0.5s ease, stroke 0.5s ease;
 }
 .toolbar-callout {
-    background-color: #333;
+    background-color: darken(#d85555,48%);
     color: #fff;
     a {
         color: #fff;
         &:hover {
             svg {
-                fill: #333 !important;
-                stroke: #333 !important;
+                fill: #000 !important;
+                stroke: #000 !important;
             }
         }
     }
@@ -72,11 +74,11 @@
 
 .pct-section {
     margin-top: -40px;
-    background-color: #000;
+    background-color: darken(#d85555,48%);
     padding-top: 60px;
 }
 .mm-category-nav {
-    background-color: #000;
+    background-color: darken(#d85555,48%);
     position: sticky;
     top: 100px;
     z-index: 1;
@@ -89,7 +91,7 @@
     width: 100%;
     margin: -40px auto 0;
     max-width: 990px;
-    background-color: #000;
+    background-color: darken(#d85555,48%);
    
 }
 .mm-nav-link {
@@ -102,7 +104,7 @@
     text-align: center;
     width: calc(33% - 10px);
     cursor: pointer;
-    border-bottom: 10px solid #000;
+    //border-bottom: 10px solid #000;
     &:hover {
         text-decoration: none;
     }
@@ -130,7 +132,6 @@
 
 .mm-category-overview {
     color: #fff;
-    background-color: #000;
     padding-top: 0;
     padding-bottom: 40px;
     margin-top: -40px;
@@ -175,17 +176,19 @@
     background-image: linear-gradient(to top, $red, $blue 34.65vw, $blue);
     @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
         padding-top: 100px;
-        background-image: linear-gradient(to top, $red, $blue 350px, $blue calc(100% - 100px), #000);
+        background-image: linear-gradient(to top, darken($red, 25%), darken($blue, 25%) 350px, darken($blue, 5%) 40%, darken($blue, 5%) 60%, darken($blue, 40%) calc(100% - 100px), darken(#d85555,48%) );
+        //
     }
 }
 .mm-category-1 {
     background-image: linear-gradient(to top, $teal, $red 34.65vw, $red);
     @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
-        background-image: linear-gradient(to top, $teal, $red 350px, $red);
+        background-image: linear-gradient(to top, darken($teal, 25%), darken($red, 25%) 350px, darken($red, 5%) 40%, darken($red, 5%) 60%, darken($red, 25%));
     }
 }
 .mm-category-2 {
-    background-color: $teal;
+    background-image: linear-gradient(to top, darken($teal, 25%), darken($teal, 5%) 40%, darken($teal, 5%) 60%, darken($teal, 25%));
+    //background-color: $teal;
     padding-bottom: 100px !important;
 }
 
