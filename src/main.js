@@ -57,7 +57,7 @@ nestedData.forEach((nest, i) => {
     container.className = 'mm-item-container';
 
     var match = metadata.find(d => d.section === nest.key);
-    hed.textContent = (i + 1) + '. ' + match.hed;
+    hed.textContent = match.hed;
     if ( match.dek ){
         hed.insertAdjacentHTML('beforeend', `: <span>${match.dek}</span>`);
     }
