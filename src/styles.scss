@@ -17,7 +17,7 @@
 .page-banner__figure {
     max-width: 100%;
     img {
-        object-position: 50% 64% !important;
+        object-position: 50% 59% !important;
         width: 100%;
     }
 }
@@ -78,10 +78,12 @@
     padding-top: 60px;
 }
 .mm-category-nav {
-    background-color: darken(#d85555,48%);
+    background-color: darken($blue, 40%); 
     position: sticky;
     top: 100px;
     z-index: 1;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid rgba(#fff, 0.5);
 }
 .mm-nav {
     counter-reset: nav;
@@ -89,9 +91,9 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin: -40px auto 0;
+    margin: 0 auto;
     max-width: 990px;
-    background-color: darken(#d85555,48%);
+    background-color: darken($blue, 40%);
    
 }
 .mm-nav-link {
@@ -133,7 +135,7 @@
 .mm-category-overview {
     color: #fff;
     padding-top: 0;
-    padding-bottom: 40px;
+    padding-bottom: 80px;
     margin-top: -40px;
     p {
         max-width: 990px;
@@ -172,11 +174,11 @@
     top: -64px;
 }
 .mm-category-0 {
-    padding-top: 40px;
+    padding-top: 0;
     background-image: linear-gradient(to top, $red, $blue 34.65vw, $blue);
     @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
-        padding-top: 100px;
-        background-image: linear-gradient(to top, darken($red, 25%), darken($blue, 25%) 350px, darken($blue, 5%) 40%, darken($blue, 5%) 60%, darken($blue, 40%) calc(100% - 100px), darken(#d85555,48%) );
+        
+        background-image: linear-gradient(to top, darken($red, 25%), darken($blue, 25%) 350px, darken($blue, 5%) 40%, darken($blue, 5%) 60%, darken($blue, 40%) calc(100% - 100px), darken($blue, 40%)  );
         //
     }
 }
