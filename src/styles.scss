@@ -1,5 +1,8 @@
 @import 'variables.scss';
 
+#pew-app {
+    overflow-x: hidden;
+}
 /* site overrides */
 .page-banner {
     height: 800px;
@@ -109,6 +112,7 @@
     margin: 0 auto;
     max-width: 990px;
     background-color: darken($blue, 40%);
+    min-height: 40px;
    
 }
 .mm-nav-link {
