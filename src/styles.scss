@@ -97,7 +97,7 @@
     border-top: 1px solid #fff;
     border-bottom: 1px solid rgba(#fff, 0.5);
     @media screen and (max-width: 910px){
-        top: 58px;
+        top: 57px;
     }
 }
 .mm-nav {
@@ -164,61 +164,63 @@
 
 .mm-category:not(.mm-category-overview):not(.mm-category-nav) {
     position: relative;
-    padding-bottom: 34.65%;
+    padding-bottom: 125px;
     color: #fff;
-    @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
-        padding-bottom: 350px;
+    min-height: 100vh;
+    padding-top: 68px;
+    //border-bottom: 1px solid #fff;
+    &.mm-category-0 {
+        padding-top: 0;
     }
+    
+}
+
+.mm-anchor {
+    width: 10px;
+    outline: 1px solid magenta;
+    position: absolute;
+    top: 50vh;
+    bottom: 50vh;
+    right: 10px;
+    z-index: 9999;
+
+
 }
 .mm-category--anchor {
-    @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
-            height: 350px;
-            top: calc(100vh - 517px);
-            padding-bottom: 0;
-    }
-    top: calc(100vh - 167px - 34.65vw);
-    height: 0;
-    padding-bottom: 34.65%;
-    width: 1px;
-    background-color: cyan;
-    position: absolute;
-    left: 10px;
-    z-index: 9
-}
-.mm-category--anchor-upward {
-    background-color: yellow;
-    height: 10px;
-    top: auto;
-    bottom: calc(50vh + 125px);
-}
-.mm-category--anchor-0 {
     height: 1px;
     padding-bottom: 0;
-    top: calc(100vh - 167px);
+    top: calc(100vh - 59px);
+    outline: 1px solid magenta;
+    width: 10px;
+    left: 10px;
+    position: absolute;
+    .mm-category-0 & {
+        top: calc(100vh - 127px);
+    }
+
+    @media screen and (max-width: 910px){
+        .mm-category-0 & {
+            top: calc(100vh - 124px);
+        }
+        top: calc(100vh - 48px);
+    }
 }
-.mm-category--anchor-top {
-    height: 1px;
-    top: -169px;
-}
-.mm-category-0 {
-    padding-top: 0;
+.mm-category.mm-category-0 {
     //background-image: linear-gradient(to top, $red, $blue 34.65vw, $blue);
-    background-image: linear-gradient(to top, darken($red, 25%), darken($blue, 25%) 17vh, darken($blue, 5%) 40%, darken($blue, 5%) 60%, darken($blue, 40%) calc(100% - 100px), darken($blue, 40%)  );
-    @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
+    background-image: linear-gradient(to top, darken($blue, 40%), darken($blue, 5%) 40%, darken($blue, 5%) 60%, darken($blue, 40%) calc(100% - 100px), darken($blue, 40%)  );
+   /* @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
         
         background-image: linear-gradient(to top, darken($red, 25%), darken($blue, 25%) 17vh, darken($blue, 5%) 40%, darken($blue, 5%) 60%, darken($blue, 40%) calc(100% - 100px), darken($blue, 40%)  );
         //
-    }
+    }*/
 }
 .mm-category-1 {
     //background-image: linear-gradient(to top, $teal, $red 34.65vw, $red);
-    background-image: linear-gradient(to top, darken($teal, 25%), darken($red, 25%) 17vh, darken($red, 5%) 40%, darken($red, 5%) 60%, darken($red, 25%));
-    @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
-        background-image: linear-gradient(to top, darken($teal, 25%), darken($red, 25%) 350px, darken($red, 5%) 40%, darken($red, 5%) 60%, darken($red, 25%));
-    }
+    background-image: linear-gradient(to top, darken($red, 35%), darken($red, 5%) 40%, darken($red, 5%) 60%, darken($red, 35%));
+    
 }
 .mm-category-2 {
-    background-image: linear-gradient(to top, darken($teal, 25%), darken($teal, 5%) 40%, darken($teal, 5%) 60%, darken($teal, 25%));
+    background-image: linear-gradient(to top, darken($teal, 35%), darken($teal, 35%) 17vh, darken($teal, 5%) 40%, darken($teal, 5%) 60%, darken($teal, 35%));
     //background-color: $teal;
     padding-bottom: 100px !important;
 }

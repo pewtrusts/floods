@@ -37,7 +37,7 @@ nestedData.forEach((nest, i) => {
     sectionAnchor.setAttribute('data-anchor', i);
     sectionAnchor.setAttribute('data-direction', 'down');
     //upward anchors
-    var upwardAnchor = document.createElement('a');
+    /*var upwardAnchor = document.createElement('a');
     upwardAnchor.className = 'mm-category--anchor mm-category--anchor-upward mm-category--anchor-upward-' + i;
     upwardAnchor.setAttribute('data-anchor-upward', i);
     upwardAnchor.setAttribute('data-anchor', i);
@@ -45,7 +45,10 @@ nestedData.forEach((nest, i) => {
     var topAnchor = document.createElement('a');
     topAnchor.className = 'mm-category--anchor mm-category--anchor-top';
     topAnchor.setAttribute('data-anchor', -1);
-    topAnchor.setAttribute('data-direction', 'up');
+    topAnchor.setAttribute('data-direction', 'up');*/
+    var newAnchor = document.createElement('a');
+    newAnchor.className = 'mm-anchor';
+    newAnchor.setAttribute('data-anchor', i);
     var outerContainer = document.createElement('div');
     outerContainer.className = 'mm-outer-container';
     var hedContainer = document.createElement('div');
@@ -138,10 +141,11 @@ nestedData.forEach((nest, i) => {
         outerContainer.appendChild(llButton);
     }
     if ( i === 0 ){
-        section.appendChild(topAnchor);
+        //section.appendChild(topAnchor);
     }
     section.appendChild(sectionAnchor);
-    section.appendChild(upwardAnchor);
+    section.appendChild(newAnchor);
+    //section.appendChild(upwardAnchor);
     section.appendChild(outerContainer);
     frag.appendChild(section);
 });

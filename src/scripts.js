@@ -2,9 +2,7 @@
     // wrapped in an IIFE to avoid polluting global context
     var buttons = document.querySelectorAll('.js-mm-button');
     var items = document.querySelectorAll('.js-mm-section');
-    var navAnchors = document.querySelectorAll('.mm-category--anchor:not(.mm-category--anchor-top):not(.mm-category--anchor-upward)');
-    var scrollPosition = 0;
-    var scrollDirection;
+    var navAnchors = document.querySelectorAll('.mm-category--anchor');
     function itemMouseHandler(){
         var _this = this;
         this.classList.remove('is-selected');
@@ -42,21 +40,23 @@
         // set up observers
     function observerCallback(entries){
         var activeLink = document.querySelector('.mm-nav-link.is-active');
+        var numberIntersecting = 0;
         entries.forEach(function(entry){
-            scrollDirection = window.pageYOffset < scrollPosition ? 'up' : window.pageYOffset > scrollPosition ? 'down' : scrollDirection;
-            scrollPosition = window.pageYOffset;
-            if (((entry.target.dataset.direction === 'down' && scrollDirection === 'down') || (entry.target.dataset.direction === 'up' && scrollDirection === 'up')) && entry.isIntersecting ){
+            console.log(entry);
+            if ( entry.isIntersecting ){
                 if ( activeLink ) {
                     activeLink.classList.remove('is-active');
                 }
-                if ( entry.target.dataset.anchor !== "-1" ){
-                    navLinks[entry.target.dataset.anchor].classList.add('is-active');
-                }
-            }
+                numberIntersecting++;
+                navLinks[entry.target.dataset.anchor].classList.add('is-active');
+            }    
         });
+        if ( numberIntersecting === 0 && activeLink ){
+                activeLink.classList.remove('is-active');
+            }
     }
     var observer = new IntersectionObserver(observerCallback);
-    var anchors = document.querySelectorAll('.mm-category--anchor');
+    var anchors = document.querySelectorAll('.mm-anchor');
     for ( var k = 0; k < anchors.length; k++ ){
         observer.observe(anchors[k]);
     }
