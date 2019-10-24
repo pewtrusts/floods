@@ -4,11 +4,11 @@
  //   overflow-x: hidden;
 }
 /* site overrides */
-body {
-    background-color: darken(#d85555,48%);
+.js-main-primary {
+   // background-color: darken(#d85555,48%);
 }
 .global-header {
-    background-color: #fff;
+ //   background-color: #fff;
 }
 .page-banner {
     height: 800px;
@@ -39,6 +39,7 @@ body {
 .page-metadata {
     color: #fff;
     margin-bottom: 0;
+    background-color: darken(#db5555, 48%);
    // height: 0;
    // bottom: 34px;
    // position: relative;
@@ -197,7 +198,6 @@ body {
 
 .mm-anchor {
     width: 10px;
-    outline: 1px solid magenta;
     position: absolute;
     top: 50vh;
     bottom: 50vh;
@@ -210,7 +210,6 @@ body {
     height: 1px;
     padding-bottom: 0;
     top: calc(100vh - 59px);
-    outline: 1px solid magenta;
     width: 10px;
     left: 10px;
     position: absolute;
@@ -220,7 +219,7 @@ body {
 
     @media screen and (max-width: 910px){
         .mm-category-0 & {
-            top: calc(100vh - 124px);
+            top: calc(100vh - 99px);
         }
         top: calc(100vh - 48px);
     }
@@ -351,8 +350,19 @@ body {
     .back-face-visible & {
         visibility: hidden;
     }
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to bottom right, rgba(0,0,0,0.15), rgba(0,0,0,0.7) 50%);
+
+    }
     img {
-        filter: brightness(65%);
+     //   filter: brightness(65%);
       //  backface-visibility: hidden;
         line-height: 0;
     }
@@ -399,13 +409,14 @@ body {
         "alpha" 85.714%
         "beta" 14.286% /
         100%;
+    z-index: 1;
     h3 {
         grid-area: alpha;
         align-self: center;
         text-align: center;
         font-weight: 900;
         font-size: 3.56vw;
-        line-height: 120%;
+        line-height: 100%;
         @media screen and (min-width: 1010px), screen and (max-width: 724px) {
             font-size: 2.25rem;
         }
