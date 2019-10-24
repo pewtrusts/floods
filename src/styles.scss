@@ -5,7 +5,9 @@
 }
 /* site overrides */
 .js-main-primary {
-   // background-color: darken(#d85555,48%);
+    > section:nth-child(2){
+     background-color: darken(#d85555,48%);
+}
 }
 .global-header {
  //   background-color: #fff;
