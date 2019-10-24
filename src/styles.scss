@@ -6,7 +6,8 @@
 /* site overrides */
 .js-main-primary {
     > section:nth-child(2){
-     background-color: darken(#d85555,48%);
+     //background-color: darken(#d85555,48%);
+     background-color: #000;
 }
 }
 .global-header {
@@ -21,7 +22,8 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-image: linear-gradient(to top, rgba(darken(#d85555,48%),1), rgba(darken(#FF7F49,48%),0.25) 200px, rgba(darken(#FF7F49,48%),0));
+        //background-image: linear-gradient(to top, rgba(darken(#d85555,48%),1), rgba(darken(#FF7F49,48%),0.25) 200px, rgba(darken(#FF7F49,48%),0));
+        background-image: linear-gradient(to top, rgba(#000,1), rgba(#000,0.25) 200px, rgba(#000,0));
         top: 0;
     }
 }
@@ -41,7 +43,7 @@
 .page-metadata {
     color: #fff;
     margin-bottom: 0;
-    background-color: darken(#db5555, 48%);
+    background-color: #000;
    // height: 0;
    // bottom: 34px;
    // position: relative;
@@ -108,7 +110,7 @@
 
 .pct-section {
     margin-top: -40px;
-    background-color: darken(#d85555,48%);
+    background-color: #000;
     padding-top: 60px;
 }
 .mm-category-nav {
@@ -117,13 +119,12 @@
     top: 60px;
     z-index: 100;
     border-top: 1px solid #fff;
-    border-bottom: 1px solid rgba(#fff, 0.5);
+    border-bottom: 1px solid #fff;
     @media screen and (max-width: 910px){
         top: 57px;
     }
 }
 .mm-nav {
-    counter-reset: nav;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -136,8 +137,7 @@
 }
 .mm-nav-link {
     color: #fff;
-    counter-increment: nav;
-    font-weight: 400;
+    font-weight: 600;
     text-transform: uppercase;
     font-size: 20px;
     padding: 20px 0;
@@ -158,15 +158,7 @@
     &.mm-nav-link-2:hover, &.mm-nav-link-2.is-active {
         color: $teal;
     }
-    &::before {
-        content: counter(nav) ". ";
-        //font-weight: 900;
-    }
-    &.is-active {
-        //color: #fff;
-        //background-color: #f0f0f0;
-        font-weight: 900;
-    }
+    
     @media screen and (max-width: 675px){
         font-size: 2.95vw;
         padding: 2.95vw 0;
@@ -227,22 +219,14 @@
     }
 }
 .mm-category.mm-category-0 {
-    //background-image: linear-gradient(to top, $red, $blue 34.65vw, $blue);
-    background-image: linear-gradient(to top, darken($blue, 40%), darken($blue, 5%) 40%, darken($blue, 5%) 60%, darken($blue, 40%) calc(100% - 100px), darken($blue, 40%)  );
-   /* @media screen and (min-width: 1010px), screen and (max-width: 724px) and (min-width: 521px) {
-        
-        background-image: linear-gradient(to top, darken($red, 25%), darken($blue, 25%) 17vh, darken($blue, 5%) 40%, darken($blue, 5%) 60%, darken($blue, 40%) calc(100% - 100px), darken($blue, 40%)  );
-        //
-    }*/
+    background-image: linear-gradient(to top, darken($red, 35%), darken($blue, 40%) 125px, darken($blue, 5%) 40%, darken($blue, 5%) 60%, darken($blue, 40%) calc(100% - 100px), darken($blue, 40%)  );
 }
 .mm-category-1 {
-    //background-image: linear-gradient(to top, $teal, $red 34.65vw, $red);
-    background-image: linear-gradient(to top, darken($red, 35%), darken($red, 5%) 40%, darken($red, 5%) 60%, darken($red, 35%));
+    background-image: linear-gradient(to top, darken($teal, 35%), darken($red, 35%) 125px, darken($red, 5%) 40%, darken($red, 5%) 60%, darken($red, 35%));
     
 }
 .mm-category-2 {
     background-image: linear-gradient(to top, darken($teal, 35%), darken($teal, 35%) 17vh, darken($teal, 5%) 40%, darken($teal, 5%) 60%, darken($teal, 35%));
-    //background-color: $teal;
     padding-bottom: 100px !important;
 }
 
@@ -372,8 +356,8 @@
 }
 .mm-flip-icon {
     position: absolute;
-    width: 41px;
-    height: 29px;
+    width: 33px;
+    height: 23px;
     right: 3%;
     bottom: 6%;
 
