@@ -1,9 +1,15 @@
 @import 'variables.scss';
 
 #pew-app {
-    overflow-x: hidden;
+ //   overflow-x: hidden;
 }
 /* site overrides */
+body {
+    background-color: darken(#d85555,48%);
+}
+.global-header {
+    background-color: #fff;
+}
 .page-banner {
     height: 800px;
     max-height: 50vh;
@@ -17,6 +23,12 @@
         top: 0;
     }
 }
+/*@media (max-width: 61.875em) {
+    .page-banner__caption-inner {
+        bottom: 1.875rem;
+    }
+
+}*/
 .page-banner__figure {
     max-width: 100%;
     img {
@@ -26,14 +38,15 @@
 }
 .page-metadata {
     color: #fff;
-    height: 0;
-    bottom: 34px;
-    position: relative;
-    max-width: calc(100% - 225px);
+    margin-bottom: 0;
+   // height: 0;
+   // bottom: 34px;
+   // position: relative;
+   // max-width: calc(100% - 225px);
 }
 .meta-data-wrapper {
 }
-.page-toolbar__wrapper {
+/*.page-toolbar__wrapper {
     margin-top: -40px;
     
 }
@@ -42,8 +55,8 @@
    // opacity: 0;
     transition: transform 0.2s ease;
     transform: translateY(-47px)
-}
-.page-toolbar {
+}*/
+/*.page-toolbar {
     transition: background-color 0.5s ease, color 0.5s ease;
     z-index: 99;
     &:not(.page-toolbar--sticky){
@@ -84,6 +97,9 @@
             }
         }
     }
+}*/
+.js-main-primary > section:first-child {
+    margin-bottom: 0;
 }
 /* end site overrides */
 
