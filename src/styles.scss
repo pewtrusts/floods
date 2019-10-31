@@ -1,7 +1,7 @@
 @import 'variables.scss';
 
 #pew-app {
- //   overflow-x: hidden;
+ margin-bottom: 60px;
 }
 /* site overrides */
 .js-main-primary {
@@ -499,7 +499,7 @@
     }
     
 }
-.mm-front-inner a, .mm-back a, .mm-ll-button {
+.mm-front-inner a, .mm-back a, .mm-overview-btn {
     color: #fff;
     display: block;
     width: 168px;
@@ -540,13 +540,14 @@
     }
 
 }
-.mm-ll-button {
+.mm-overview-btn {
     background-color: $blue;
-    margin: 20px auto;
-    display: block;
-    text-align: center;
-    width: 160px;
+    display: inline-block;
     border-width: 0;
+    color: #fff;
+    width: auto;
+    font-size: 0.75em;
+    margin-top: 1em;
     &:hover {
         color: #fff;
         background-color: darken($blue, 20%);
@@ -580,4 +581,8 @@
 .mm-lessons-learned {
     margin: 100px auto 0;
     text-align: center;
+}
+.mm-bottom-anchor {
+    position: absolute;
+    bottom: 60px;
 }

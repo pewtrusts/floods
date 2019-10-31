@@ -132,13 +132,13 @@ nestedData.forEach((nest, i) => {
     if ( i === 2 ){
         var lessons = document.createElement('h2');
         lessons.className = 'mm-lessons-learned';
-        lessons.textContent = 'Read more about lessons learned';
-        var llButton = document.createElement('a')
+        lessons.textContent = 'Read more about lessons learned below';
+        /*var llButton = document.createElement('a')
         llButton.className = 'mm-ll-button';
         llButton.textContent = 'discover';
-        llButton.href="#";
+        llButton.href="#";*/
         outerContainer.appendChild(lessons);
-        outerContainer.appendChild(llButton);
+     //   outerContainer.appendChild(llButton);
     }
     if ( i === 0 ){
         //section.appendChild(topAnchor);
@@ -150,3 +150,8 @@ nestedData.forEach((nest, i) => {
     frag.appendChild(section);
 });
 appContainer.appendChild(frag);
+
+var bottomAnchor = document.createElement('a');
+bottomAnchor.id = 'mm-bottom-anchor';
+bottomAnchor.className = 'mm-bottom-anchor';
+appContainer.appendChild(bottomAnchor);
