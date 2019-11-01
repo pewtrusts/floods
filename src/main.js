@@ -103,7 +103,7 @@ nestedData.forEach((nest, i) => {
         backHed.className = 'mm-back-header';
         backHed.textContent = item.name;
         var list = document.createElement('dl');
-        ['Problem', 'Solution', 'Outcome'].forEach(d => {
+        ['Problem', 'Policy solution', 'Outcome'].forEach(d => {
             var term = document.createElement('dt');
             term.textContent = d;
             list.appendChild(term);
