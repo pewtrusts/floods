@@ -5,6 +5,7 @@
 }
 /* site overrides */
 .js-main-primary {
+    background-color: #000; // for IE;
     > section:nth-child(2){
      //background-color: darken(#d85555,48%);
      background-color: #000;
@@ -17,7 +18,7 @@
     height: 800px;
     max-height: 50vh;
     &::before {
-        content: '';
+        content: ' ';
         display: block;
         position: absolute;
         width: 100%;
@@ -25,6 +26,10 @@
         //background-image: linear-gradient(to top, rgba(darken(#d85555,48%),1), rgba(darken(#FF7F49,48%),0.25) 200px, rgba(darken(#FF7F49,48%),0));
         background-image: linear-gradient(to top, rgba(#000,1), rgba(#000,0.25) 200px, rgba(#000,0));
         top: 0;
+        z-index: 1;
+    }
+    figcaption {
+        z-index: 2;
     }
 }
 /*@media (max-width: 61.875em) {
@@ -171,7 +176,7 @@
     color: #fff;
     padding-top: 0;
     padding-bottom: 80px;
-    margin-top: -40px;
+    background-color: #000;
     p {
         max-width: 990px;
     }
