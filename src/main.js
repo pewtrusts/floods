@@ -88,11 +88,15 @@ nestedData.forEach((nest, i) => {
         frontInner.className = 'mm-front-inner';
         var itemHed = document.createElement('h3');
         itemHed.textContent = item.hed; 
+        /*var itemSubHed = document.createElement('p');
+        itemSubHed.className = 'mm-subhed';
+        itemSubHed.textContent = item.hed; */
         var button = document.createElement('a');
         button.className = 'js-mm-button';
         button.href = item.url; 
         button.textContent = 'Get the brief';
         frontInner.appendChild(itemHed);
+        //frontInner.appendChild(itemSubHed);
         frontInner.appendChild(button);
         
         front.appendChild(frontInner);

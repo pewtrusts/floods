@@ -346,12 +346,17 @@
         height: 100%;
         background-image: linear-gradient(to bottom right, rgba(0,0,0,0.15), rgba(0,0,0,0.7) 50%);
     }
-    &:hover, &:focus {
+  /*  &:hover, &:focus {
         &::after {
             background-image: none;
+            //background-image: linear-gradient(to bottom right, rgba(0,0,0,0.15), rgba(0,0,0,0.15) 50%);
         }
         h3 {
             opacity: 0;
+        }
+        .mm-subhed {
+            opacity: 1;
+            transform: translateY(0);
         }
         .mm-category-0 & .mm-front-inner a {
             background-color: $dark_blue;
@@ -365,7 +370,7 @@
             background-color: darken($teal, 20%);
             border-color: darken($teal, 20%);
         }
-    }
+    }*/
     img {
      //   filter: brightness(65%);
       //  backface-visibility: hidden;
@@ -422,8 +427,6 @@
         font-weight: 900;
         font-size: 3.56vw;
         line-height: 100%;
-        opacity: 1;
-        transition: opacity 0.2s ease;
         @media screen and (min-width: 1010px), screen and (max-width: 724px) {
             font-size: 2.25rem;
         }
