@@ -459,6 +459,7 @@
         margin-top: 3.96vw;
         font-size: 1.9vw;
         font-weight: 600;
+        hyphens: auto;
         @media screen and (min-width: 1010px), screen and (max-width: 724px) {
             margin-top: 40px;
             font-size: 1.2em;
@@ -485,12 +486,12 @@
             content: '';
             display: block;
             clear: left;
-            margin-bottom: 2.97vw;
+            margin-bottom: 1.49vw;
             @media screen and (min-width: 1010px), screen and (max-width: 724px) {
-                margin-bottom: 30px;
+                margin-bottom: 15px;
             }
             @media screen and (max-width: 520px){
-                margin-bottom: calc(2.97vw * 2);
+                margin-bottom: calc(1.49vw * 2);
             }
         }
     }
