@@ -23,6 +23,7 @@ nestedData.forEach((nest, i) => {
     var link = document.createElement('a');
     link.className = 'mm-nav-link mm-nav-link-' + i;
     link.setAttribute('data-section', i);
+    link.href = `#mm-section-${i}`;
     link.textContent = metadata.find(d => d.section === nest.key).short;
     nav.appendChild(link);
 });
@@ -30,6 +31,7 @@ nestedData.forEach((nest, i) => {
     let link = document.createElement('a');
     link.className = 'mm-nav-link mm-nav-link-' + 3;
     link.setAttribute('data-section', 3);
+    link.href = '#mm-category--anchor-3';
     link.textContent = 'full overview'
     nav.appendChild(link);
 }
@@ -38,9 +40,11 @@ appContainer.appendChild(navSection);
 nestedData.forEach((nest, i) => {
     var section = document.createElement('section');
     section.className = 'mm-category mm-category-' + i;
+    section.id = 'mm-section-' + i;
     //downward anchors
     var sectionAnchor = document.createElement('a');
     sectionAnchor.className = 'mm-category--anchor mm-category--anchor-' + i;
+    sectionAnchor.id = 'mm-category--anchor-' + i;
     sectionAnchor.setAttribute('data-anchor', i);
     sectionAnchor.setAttribute('data-direction', 'down');
     //upward anchors
@@ -56,6 +60,7 @@ nestedData.forEach((nest, i) => {
     var newAnchor = document.createElement('a');
     newAnchor.className = 'mm-anchor';
     newAnchor.setAttribute('data-anchor', i);
+    newAnchor.setAttribute('id', 'anchor-' + i);
     var outerContainer = document.createElement('div');
     outerContainer.className = 'mm-outer-container';
     var hedContainer = document.createElement('div');
@@ -153,6 +158,7 @@ nestedData.forEach((nest, i) => {
         let newAnchor = document.createElement('a');
         newAnchor.className = 'mm-anchor mm-overview-anchor';
         newAnchor.setAttribute('data-anchor', 3);
+        newAnchor.setAttribute('id', 'anchor-3');
         outerContainer.appendChild(newAnchor);
     }
     if ( i === 0 ){
@@ -169,4 +175,5 @@ appContainer.appendChild(frag);
 var bottomAnchor = document.createElement('a');
 bottomAnchor.id = 'mm-bottom-anchor';
 bottomAnchor.className = 'mm-bottom-anchor mm-category--anchor';
+bottomAnchor.id = 'mm-category--anchor-3';
 appContainer.appendChild(bottomAnchor);

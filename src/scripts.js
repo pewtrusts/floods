@@ -19,7 +19,8 @@
             _this.classList.toggle('back-face-visible');
         }, 200);
     }
-    function navClickHandler(){
+    function navClickHandler(e){
+        e.preventDefault();
         var section = +this.dataset.section;
         navAnchors[section].scrollIntoView(section === 3);
     }
