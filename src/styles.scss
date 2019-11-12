@@ -165,6 +165,9 @@
     &.mm-nav-link-2:hover, &.mm-nav-link-2.is-active {
         color: $teal;
     }
+    &.mm-nav-link-3:hover, &.mm-nav-link-3.is-active {
+        color: $dark_blue;
+    }
     
     @media screen and (max-width: 675px){
         font-size: 2.95vw;
@@ -204,6 +207,10 @@
     bottom: 50vh;
     right: 10px;
     z-index: 9999;
+    &.mm-overview-anchor {
+        top: auto;
+        bottom: -50vh;
+    }
 
 
 }
@@ -595,5 +602,9 @@
 }
 .mm-bottom-anchor {
     position: absolute;
-    bottom: 60px;
+    bottom: 125px;
+    top: auto;
+    @media screen and (max-width: 910px){
+        bottom: 136px;
+    }
 }

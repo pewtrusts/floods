@@ -21,7 +21,7 @@
     }
     function navClickHandler(){
         var section = +this.dataset.section;
-        navAnchors[section].scrollIntoView(false);
+        navAnchors[section].scrollIntoView(section === 3);
     }
     // using `for` loop to avoid need for NodeList.forEach polyfill
     for ( var i = 0; i < buttons.length; i++ ){

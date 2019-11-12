@@ -26,6 +26,13 @@ nestedData.forEach((nest, i) => {
     link.textContent = metadata.find(d => d.section === nest.key).short;
     nav.appendChild(link);
 });
+{
+    let link = document.createElement('a');
+    link.className = 'mm-nav-link mm-nav-link-' + 3;
+    link.setAttribute('data-section', 3);
+    link.textContent = 'full overview'
+    nav.appendChild(link);
+}
 navSection.appendChild(nav);
 appContainer.appendChild(navSection);
 nestedData.forEach((nest, i) => {
@@ -143,6 +150,10 @@ nestedData.forEach((nest, i) => {
         llButton.href="#";*/
         outerContainer.appendChild(lessons);
      //   outerContainer.appendChild(llButton);
+        let newAnchor = document.createElement('a');
+        newAnchor.className = 'mm-anchor mm-overview-anchor';
+        newAnchor.setAttribute('data-anchor', 3);
+        outerContainer.appendChild(newAnchor);
     }
     if ( i === 0 ){
         //section.appendChild(topAnchor);
@@ -157,5 +168,5 @@ appContainer.appendChild(frag);
 
 var bottomAnchor = document.createElement('a');
 bottomAnchor.id = 'mm-bottom-anchor';
-bottomAnchor.className = 'mm-bottom-anchor';
+bottomAnchor.className = 'mm-bottom-anchor mm-category--anchor';
 appContainer.appendChild(bottomAnchor);
