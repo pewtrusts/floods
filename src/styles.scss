@@ -186,13 +186,13 @@
 
 .mm-category:not(.mm-category-overview):not(.mm-category-nav) {
     position: relative;
-    padding-bottom: 125px;
+    padding-bottom: 157px;
     color: #fff;
     min-height: 100vh;
     padding-top: 68px;
     //border-bottom: 1px solid #fff;
     &.mm-category-0 {
-        padding-top: 0;
+      //  padding-top: 0;
     }
     
 }
@@ -215,12 +215,12 @@
     left: 10px;
     position: absolute;
     .mm-category-0 & {
-        top: calc(100vh - 127px);
+       // top: calc(100vh - 127px);
     }
 
     @media screen and (max-width: 910px){
         .mm-category-0 & {
-            top: calc(100vh - 99px);
+         //   top: calc(100vh - 99px);
         }
         top: calc(100vh - 48px);
     }
