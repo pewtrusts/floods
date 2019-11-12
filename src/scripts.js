@@ -65,5 +65,10 @@
     for ( var l = 0; l < navLinks.length; l++ ){ // using `for` loop to avoid need for NodeList.forEach polyfill
         navLinks[l].addEventListener('click', navClickHandler);
     }
+    var overviewLink = document.querySelector('#mm-overview-link');
+    overviewLink.addEventListener('click', function(e){
+        e.preventDefault();
+        navAnchors[3].scrollIntoView(true);
+    });
 })()
 
