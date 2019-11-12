@@ -2,13 +2,15 @@
 
 #pew-app {
  margin-bottom: 60px;
+ display: block;
 }
 /* site overrides */
 .js-main-primary {
-    background-color: #000; // for IE;
+    //background-color: #000; // for IE;
     > section:nth-child(2){
-     //background-color: darken(#d85555,48%);
      background-color: #000;
+     margin-bottom: 0;
+     padding-bottom: 0;
 }
 }
 .global-header {
@@ -114,7 +116,7 @@
 /* end site overrides */
 
 .pct-section {
-    margin-top: -40px;
+    
     background-color: #000;
     padding-top: 60px;
 }
