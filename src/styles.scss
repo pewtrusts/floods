@@ -6,12 +6,14 @@
 }
 /* site overrides */
 .js-main-primary {
-    //background-color: #000; // for IE;
     > section:nth-child(1){
-     background-color: #000;
-     margin-bottom: 0;
-     padding-bottom: 0;
-}
+         background-color: #000;
+         margin-bottom: 0;
+         padding-bottom: 40px;
+    }
+    > section:nth-child(2) {
+        margin-bottom: 0;
+    }
 }
 .global-header {
  //   background-color: #fff;
@@ -110,9 +112,7 @@
         }
     }
 }*/
-.js-main-primary > section:first-child {
-    margin-bottom: 0;
-}
+
 /* end site overrides */
 
 .pct-section {
@@ -185,10 +185,13 @@
 .mm-category-overview {
     color: #fff;
     padding-top: 0;
-    padding-bottom: 80px;
+    //padding-bottom: 80px;
     background-color: #000;
     p {
         max-width: 990px;
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 }
 
