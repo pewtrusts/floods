@@ -133,6 +133,9 @@
     .nav-is-fixed & {
         position: fixed;
         width: 100%;
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            position: static;
+        }
     }
 }
 .mm-nav {
@@ -248,6 +251,10 @@
 .mm-category.mm-category-0 {
     .nav-is-fixed & {
         padding-top: 135px;
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            padding-top: 68px;
+        }
+
     }
     background-image: linear-gradient(to top, darken($red, 35%), darken($blue, 40%) 125px, darken($blue, 5%) 40%, darken($blue, 5%) 60%, darken($blue, 40%) calc(100% - 100px), darken($blue, 40%)  );
 }
