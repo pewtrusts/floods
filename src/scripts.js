@@ -3,6 +3,7 @@
     var buttons = document.querySelectorAll('.js-mm-button');
     var items = document.querySelectorAll('.js-mm-section');
     var navAnchors = document.querySelectorAll('.mm-category--anchor');
+   // var nav = document.querySelector('.mm-category-nav');
     function itemMouseHandler(){
         var _this = this;
         this.classList.remove('is-selected');
@@ -50,10 +51,17 @@
                 }
                 numberIntersecting++;
                 navLinks[entry.target.dataset.anchor].classList.add('is-active');
-            }    
+                if ( entry.target.dataset.anchor == 3 ){
+                    document.body.classList.add('nav-is-fixed');
+                } else {
+                    document.body.classList.remove('nav-is-fixed');
+                }
+            }
+
         });
-        if ( numberIntersecting === 0 && activeLink ){
+        if ( numberIntersecting === 0 && activeLink && activeLink !== navLinks[3] ){
                 activeLink.classList.remove('is-active');
+                document.body.classList.remove('nav-is-fixed');
             }
     }
     var observer = new IntersectionObserver(observerCallback);
