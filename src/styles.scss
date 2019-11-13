@@ -133,6 +133,7 @@
 }
 .mm-nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     width: 100%;
@@ -149,7 +150,7 @@
     font-size: 20px;
     padding: 20px 0;
     text-align: center;
-    width: calc(33%);
+    width: 25%;
     max-width: 317px;
     cursor: pointer;
     //border-bottom: 10px solid #000;
@@ -169,9 +170,13 @@
         color: $dark_blue;
     }
     
-    @media screen and (max-width: 675px){
-        font-size: 2.95vw;
-        padding: 2.95vw 0;
+    @media screen and (max-width: 750px){
+        font-size: 2.65vw;
+        padding: 2.65vw 0;
+    }
+    @media screen and (max-width: 530px){
+        width: 50%;
+        padding: 1.325vw 0;
     }
 
 
