@@ -6,9 +6,9 @@ import overview from './overview.html';
 import * as d3 from 'd3-collection';
 
 var appContainer = document.querySelector('#pew-app');
-//if ( process.env.NODE_ENV === 'development' ){
+if ( document.querySelector('#overview-container') ){
     document.querySelector('#overview-container').insertAdjacentHTML('afterbegin', overview);
-//}
+}
 var nestedData = d3.nest().key(d => d.section).entries(data);
 
 
