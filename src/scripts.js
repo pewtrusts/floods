@@ -17,7 +17,6 @@
         setTimeout(function(){
             _this.classList.remove('back-face-visible');
         }, 200);
-        GTMPush(`Floods|Flip|${this.dataset.item}`);
     }
     function itemClickHandler(){
         var _this = this;
@@ -26,12 +25,13 @@
         setTimeout(function(){
             _this.classList.toggle('back-face-visible');
         }, 200);
+        GTMPush(`Floods|Flip|${this.dataset.item}`);
     }
     function navClickHandler(e){
         e.preventDefault();
         var section = +this.dataset.section;
         navAnchors[section].scrollIntoView(section === 3);
-        GTMPush(`Floods|Navigate|${this.data.section}`);
+        GTMPush(`Floods|Navigate|${section}`);
     }
     // using `for` loop to avoid need for NodeList.forEach polyfill
     for ( var i = 0; i < buttons.length; i++ ){
