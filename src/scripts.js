@@ -31,13 +31,13 @@
         e.preventDefault();
         var section = +this.dataset.section;
         navAnchors[section].scrollIntoView(section === 3);
-        GTMPush(`Floods|Navigate|${section}`);
+        GTMPush('Floods|Navigate|' + section);
     }
     // using `for` loop to avoid need for NodeList.forEach polyfill
     for ( var i = 0; i < buttons.length; i++ ){
         buttons[i].addEventListener('click', function(e){
             e.stopPropagation();
-            GTMPush(`Floods|GetBrief|${this.dataset.name}`);
+            GTMPush('Floods|GetBrief|' + this.dataset.name);
         });
     }
     // using `for` loop to avoid need for NodeList.forEach polyfill
