@@ -25,7 +25,7 @@
         setTimeout(function(){
             _this.classList.toggle('back-face-visible');
         }, 200);
-        GTMPush(`Floods|Flip|${this.dataset.item}`);
+        GTMPush('Floods|Flip|' + this.dataset.item);
     }
     function navClickHandler(e){
         e.preventDefault();
