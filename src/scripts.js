@@ -53,7 +53,6 @@
         var activeLink = document.querySelector('.mm-nav-link.is-active');
         var numberIntersecting = 0;
         entries.forEach(function(entry){
-            console.log(entry);
             if ( entry.isIntersecting ){
                 if ( activeLink ) {
                     activeLink.classList.remove('is-active');
