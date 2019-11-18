@@ -37,7 +37,7 @@
     for ( var i = 0; i < buttons.length; i++ ){
         buttons[i].addEventListener('click', function(e){
             e.stopPropagation();
-            GTMPush(`Floods|GetBrief|${this.dataset.item}`);
+            GTMPush(`Floods|GetBrief|${this.dataset.name}`);
         });
     }
     // using `for` loop to avoid need for NodeList.forEach polyfill
