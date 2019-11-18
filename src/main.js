@@ -85,6 +85,7 @@ nestedData.forEach((nest, i) => {
     nest.values.forEach((item, idx) => {
         var itemSect = document.createElement('section');
         itemSect.className = `mm-section mm-section-${idx + 1} js-mm-section`;
+        itemSect.setAttribute('data-item', item.section + '-' + item.name);
         var content = document.createElement('div');
         content.className = 'mm-section-content';
         var front = document.createElement('div');
@@ -107,6 +108,7 @@ nestedData.forEach((nest, i) => {
         button.className = 'js-mm-button';
         button.href = item.url; 
         button.textContent = 'Get the brief';
+        button.setAttribute('data-name', item.name);
         frontInner.appendChild(itemHed);
         //frontInner.appendChild(itemSubHed);
         frontInner.appendChild(button);

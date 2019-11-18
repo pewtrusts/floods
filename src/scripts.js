@@ -4,6 +4,12 @@
     var items = document.querySelectorAll('.js-mm-section');
     var navAnchors = document.querySelectorAll('.mm-category--anchor');
    // var nav = document.querySelector('.mm-category-nav');
+   function GTMPush(eventLabel) {
+       var dataLayer = window.dataLayer || null;
+       if (dataLayer) {
+           dataLayer.push({ 'event': 'Interactive Click', 'eventData': eventLabel });
+       }
+   }
     function itemMouseHandler(){
         var _this = this;
         this.classList.remove('is-selected');
@@ -11,6 +17,7 @@
         setTimeout(function(){
             _this.classList.remove('back-face-visible');
         }, 200);
+        GTMPush(`Floods|Flip|${this.dataset.item}`);
     }
     function itemClickHandler(){
         var _this = this;
@@ -24,11 +31,13 @@
         e.preventDefault();
         var section = +this.dataset.section;
         navAnchors[section].scrollIntoView(section === 3);
+        GTMPush(`Floods|Navigate|${this.data.section}`);
     }
     // using `for` loop to avoid need for NodeList.forEach polyfill
     for ( var i = 0; i < buttons.length; i++ ){
         buttons[i].addEventListener('click', function(e){
             e.stopPropagation();
+            GTMPush(`Floods|GetBrief|${this.dataset.item}`);
         });
     }
     // using `for` loop to avoid need for NodeList.forEach polyfill
@@ -77,6 +86,7 @@
     overviewLink.addEventListener('click', function(e){
         e.preventDefault();
         navAnchors[3].scrollIntoView(true);
+        GTMPush(`Floods|Navigate|3`);
     });
 })()
 
