@@ -98,6 +98,6 @@
     overviewLink.addEventListener('click', function(e){
         e.preventDefault();
         navAnchors[3].scrollIntoView(true);
-        GTMPush(`Floods|Navigate|3`);
+        GTMPush('Floods|Navigate|3');
     });
 })()
