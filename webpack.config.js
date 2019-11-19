@@ -155,7 +155,7 @@ module.exports = env => {
         },
         output: {
             path: __dirname + '/' + outputFolder,
-            filename: '[name].js',
+            filename: '[name].js?v=[hash:6]',
             chunkFilename: '[name].[id].js'
         },
         module: {
