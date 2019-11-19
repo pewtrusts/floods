@@ -3,6 +3,9 @@
     var buttons = document.querySelectorAll('.js-mm-button');
     var items = document.querySelectorAll('.js-mm-section');
     var navAnchors = document.querySelectorAll('.mm-category--anchor');
+    var anchors = document.querySelectorAll('.mm-anchor');
+    var observer;
+    var observerRetryCount = 0;
    // var nav = document.querySelector('.mm-category-nav');
    function GTMPush(eventLabel) {
        var dataLayer = window.dataLayer || null;
@@ -72,11 +75,21 @@
                 document.body.classList.remove('nav-is-fixed');
             }
     }
-    var observer = new IntersectionObserver(observerCallback);
-    var anchors = document.querySelectorAll('.mm-anchor');
-    for ( var k = 0; k < anchors.length; k++ ){
-        observer.observe(anchors[k]);
+    function tryObserver(){
+        if ( 'IntersectionObserver' in window ){
+            observer = new IntersectionObserver(observerCallback);
+            for ( var k = 0; k < anchors.length; k++ ){
+                observer.observe(anchors[k]);
+            }
+        } else if ( observerRetryCount < 3 ){
+            setTimeout(function(){
+                observerRetryCount++;
+                tryObserver();
+            },200);
+        }
     }
+    tryObserver();
+    
         // click events
     for ( var l = 0; l < navLinks.length; l++ ){ // using `for` loop to avoid need for NodeList.forEach polyfill
         navLinks[l].addEventListener('click', navClickHandler);
@@ -88,4 +101,3 @@
         GTMPush(`Floods|Navigate|3`);
     });
 })()
-
