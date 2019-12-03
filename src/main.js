@@ -6,9 +6,9 @@ import overview from './overview.html';
 import * as d3 from 'd3-collection';
 
 var appContainer = document.querySelector('#pew-app');
-//if ( process.env.NODE_ENV === 'development' ){
-    appContainer.insertAdjacentHTML('afterbegin', overview);
-//}
+if ( document.querySelector('#overview-container') ){
+    document.querySelector('#overview-container').insertAdjacentHTML('afterbegin', overview);
+}
 var nestedData = d3.nest().key(d => d.section).entries(data);
 
 
@@ -23,17 +23,28 @@ nestedData.forEach((nest, i) => {
     var link = document.createElement('a');
     link.className = 'mm-nav-link mm-nav-link-' + i;
     link.setAttribute('data-section', i);
+    link.href = `#mm-section-${i}`;
     link.textContent = metadata.find(d => d.section === nest.key).short;
     nav.appendChild(link);
 });
+{
+    let link = document.createElement('a');
+    link.className = 'mm-nav-link mm-nav-link-' + 3;
+    link.setAttribute('data-section', 3);
+    link.href = '#mm-category--anchor-3';
+    link.textContent = 'full overview'
+    nav.appendChild(link);
+}
 navSection.appendChild(nav);
 appContainer.appendChild(navSection);
 nestedData.forEach((nest, i) => {
     var section = document.createElement('section');
     section.className = 'mm-category mm-category-' + i;
+    section.id = 'mm-section-' + i;
     //downward anchors
     var sectionAnchor = document.createElement('a');
     sectionAnchor.className = 'mm-category--anchor mm-category--anchor-' + i;
+    sectionAnchor.id = 'mm-category--anchor-' + i;
     sectionAnchor.setAttribute('data-anchor', i);
     sectionAnchor.setAttribute('data-direction', 'down');
     //upward anchors
@@ -49,6 +60,7 @@ nestedData.forEach((nest, i) => {
     var newAnchor = document.createElement('a');
     newAnchor.className = 'mm-anchor';
     newAnchor.setAttribute('data-anchor', i);
+    newAnchor.setAttribute('id', 'anchor-' + i);
     var outerContainer = document.createElement('div');
     outerContainer.className = 'mm-outer-container';
     var hedContainer = document.createElement('div');
@@ -73,6 +85,7 @@ nestedData.forEach((nest, i) => {
     nest.values.forEach((item, idx) => {
         var itemSect = document.createElement('section');
         itemSect.className = `mm-section mm-section-${idx + 1} js-mm-section`;
+        itemSect.setAttribute('data-item', item.section + '-' + item.name);
         var content = document.createElement('div');
         content.className = 'mm-section-content';
         var front = document.createElement('div');
@@ -80,7 +93,7 @@ nestedData.forEach((nest, i) => {
         var img = document.createElement('img');
         front.innerHTML = '<svg class="mm-flip-icon" viewBox="0 0 30 21" xmlns="http://www.w3.org/2000/svg"><g><path d="M10.06 9.29a.8.8 0 0 0-1.15 0l-2.67 2.6a9.97 9.97 0 0 1-.12-1.36 8.9 8.9 0 0 1 9-8.79c1.43 0 2.79.33 4.06.95.4.2.91.03 1.1-.36a.78.78 0 0 0-.37-1.06A10.63 10.63 0 0 0 15.12.14 10.53 10.53 0 0 0 4.61 12.13L1.7 9.29a.8.8 0 0 0-1.15 0c-.34.32-.34.83 0 1.12l4.18 4.08c.15.15.36.24.57.24.22 0 .43-.09.58-.24l4.18-4.08a.8.8 0 0 0 0-1.12z"></path><path d="M29.73 10.59L25.58 6.5a.8.8 0 0 0-1.16 0l-4.18 4.08a.76.76 0 0 0 0 1.12.8.8 0 0 0 1.15 0l2.67-2.6c.06.44.12.89.12 1.36a8.9 8.9 0 0 1-9 8.79 9.18 9.18 0 0 1-4.06-.95.82.82 0 0 0-1.09.36.78.78 0 0 0 .36 1.06 10.8 10.8 0 0 0 4.82 1.13A10.53 10.53 0 0 0 25.73 8.87l2.9 2.84c.16.15.37.24.58.24.21 0 .43-.09.58-.24.27-.3.27-.8-.06-1.12z"></path></g></svg>'
         front.appendChild(img);
-        img.setAttribute('srcset', `-/media/post-launch-images/2019/10/${item.lo_res} 1x, -/media/post-launch-images/2019/10/${item.hi_res} 2x`);
+        img.setAttribute('srcset', `/-/media/post-launch-images/2019/10/${item.lo_res} 1x, /-/media/post-launch-images/2019/10/${item.hi_res} 2x`);
         img.setAttribute('width','100%');
         img.setAttribute('height','100%');
         img.setAttribute('loading','lazy');
@@ -95,6 +108,7 @@ nestedData.forEach((nest, i) => {
         button.className = 'js-mm-button';
         button.href = item.url; 
         button.textContent = 'Get the brief';
+        button.setAttribute('data-name', item.name);
         frontInner.appendChild(itemHed);
         //frontInner.appendChild(itemSubHed);
         frontInner.appendChild(button);
@@ -143,6 +157,11 @@ nestedData.forEach((nest, i) => {
         llButton.href="#";*/
         outerContainer.appendChild(lessons);
      //   outerContainer.appendChild(llButton);
+        let newAnchor = document.createElement('a');
+        newAnchor.className = 'mm-anchor mm-overview-anchor';
+        newAnchor.setAttribute('data-anchor', 3);
+        newAnchor.setAttribute('id', 'anchor-3');
+        outerContainer.appendChild(newAnchor);
     }
     if ( i === 0 ){
         //section.appendChild(topAnchor);
@@ -157,5 +176,6 @@ appContainer.appendChild(frag);
 
 var bottomAnchor = document.createElement('a');
 bottomAnchor.id = 'mm-bottom-anchor';
-bottomAnchor.className = 'mm-bottom-anchor';
+bottomAnchor.className = 'mm-bottom-anchor mm-category--anchor';
+bottomAnchor.id = 'mm-category--anchor-3';
 appContainer.appendChild(bottomAnchor);
