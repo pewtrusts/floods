@@ -67,6 +67,7 @@ const prerender = new PrerenderSPAPlugin({
         if ( isProd ){
              renderedRoute.html = renderedRoute.html.replace(/class="emitted-css" href="(.*?)"/g,'class="emitted-css" href="' + publicPath + '$1' + '"');
              renderedRoute.html = renderedRoute.html.replace(/class="emitted-bundle" src="(.*?)"/g,'class="emitted-bundle" src="' + publicPath + '$1' + '"');
+             renderedRoute.html = renderedRoute.html.replace(/<script.*?class="emitted-bundle" src="[^"]+render\.js[^"]+".*?<\/script>/,'');
              renderedRoute.html = renderedRoute.html.replace(/<\/?head>/g,'').replace(/<\/?html.*?>|<\/?body.*?>/g,'');
              renderedRoute.html = renderedRoute.html.replace(/<section class="mm-category mm-category-overview">[\s\S]*?<\/section>/,'');
          } 
